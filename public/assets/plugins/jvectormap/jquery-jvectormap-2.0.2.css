@@ -10,8 +10,8 @@
     display: none;
     border: solid 1px #CDCDCD;
     border-radius: 3px;
-    background: #dddbe2;
-    color: #000;
+    background: #292929;
+    color: white;
     font-family: sans-serif, Verdana;
     font-size: smaller;
     padding: 3px;
@@ -21,9 +21,9 @@
     position: absolute;
     left: 10px;
     border-radius: 3px;
-    background: #dddbe2;
+    background: #292929;
     padding: 5px;
-    color: #2a2659;
+    color: white;
     cursor: pointer;
     line-height: 20px;
     text-align: center;

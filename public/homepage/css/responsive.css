@@ -1,0 +1,377 @@
+/* Alone Non Profit Multipurpose HTML5 Template */
+
+@media only screen and (max-width: 1200px){
+	.boxed-layout .page-outer-container{
+		padding:0px 20px;	
+	}
+}
+
+@media only screen and (max-width: 1140px){
+	.main-header .header-lower .outer-box{
+		padding-right:0px;	
+	}
+	
+	.header-lower .logo,
+	.header-lower .main-menu{
+		float:none !important;
+	}
+	
+	.main-menu{
+		margin-right:20px;	
+	}
+	
+	.main-menu .navigation > li{
+		margin-right:25px;	
+	}
+	
+	.fluid-image-outer img{
+		position:relative !important;
+		display:block;
+		max-width:100%;
+		right:0px;
+	}
+	
+	.vertical-green-bar .donate-link-box::before{
+		display:none;	
+	}
+	
+	.recent-donors-section .title-column{
+		padding-top:40px;
+		padding-bottom:40px;
+	}
+	
+	.recent-donors-section .title-column .inner-box{
+		margin:0px;	
+	}
+	
+	.custom-bg-section .content-outer{
+		padding:80px 50px;	
+	}
+	
+	.default-stories-section .default-story-column,
+	.featured-story-column{
+		margin-right:0px !important;
+		margin-left:0px !important;
+	}
+	
+	.main-header.style-two .transparent-container{
+		padding-left:15px;
+		padding-right:15px;	
+	}
+	
+	.sponsor-organization .column{
+		width:33.333%;	
+	}
+}
+
+@media only screen and (min-width: 768px){
+	.main-menu .navigation > li > ul,
+	.main-menu .navigation > li > ul > li > ul{
+		display:block !important;
+		visibility:hidden;
+		opacity:0;
+	}
+}
+
+
+@media only screen and (max-width: 1023px){
+	
+	.main-menu{
+		display:none;	
+	}
+	
+	.main-header .nav-toggler{
+		display:block;	
+	}
+	
+	.main-header .cart-box{
+		right:70px;	
+	}
+	
+	.main-header .top-bar .top-right{
+		float:left;
+		margin-bottom:15px;
+	}
+	
+	.vertical-green-bar{
+		margin-top:30px;	
+	}
+	
+	.default-stories-section .outer-box{
+		padding:0px;	
+	}
+	
+	.default-stories-section .outer-box:before{
+		display:none;	
+	}
+	
+	.default-product-column .inner-box{
+		padding-bottom:0px !important;	
+	}
+	
+	.default-product-column .content-box{
+		padding-bottom:50px !important;	
+	}
+	
+	.recent-blog-section .default-blog-post .post-content{
+		padding-top:30px;	
+	}
+	
+	.main-header.style-two .transparent-container{
+		padding-top:0px;
+		padding-bottom:0px;	
+	}
+	
+	.boxed-layout .page-outer-container{
+		padding:0px 0px;	
+	}
+	
+	.blog-grid-view .default-blog-post .post-content-outer{
+		margin-top:20px;
+	}
+	
+	.blog-grid-view .default-blog-post .imagebox-outer{
+		margin-left:0px;	
+	}
+}
+
+@media only screen and (max-width: 767px){
+	
+	.header-lower .outer-box{
+		padding-right:0px;	
+	}
+	
+	.main-header .top-bar{
+		text-align:center;	
+	}
+	
+	.main-header .top-bar .top-right .donate-outer{
+		display:none;
+	}
+	
+	.main-header.style-two .lower-section{
+		top:0px;	
+	}
+	
+
+	.main-slider .tp-caption{
+		display:none !important;	
+	}
+	
+	.custom-bg-section .info-content .info-column{
+		width:100%;
+		margin-bottom:20px;
+	}
+	
+	.sponsor-organization .column{
+		width:50%;	
+	}
+	
+	.recent-posts-thumbs .recent-post-thumb{
+		width:100%;	
+	}
+	
+	.intro-columns .intro-column{
+		padding:0px 15px !important;	
+	}
+	
+	.section-title h1{
+		font-size:28px;
+		line-height:40px;
+		margin-bottom:10px;	
+	}
+	
+	.event-info-container .info-column .inner-box{
+		padding-left:0px;	
+	}
+	
+	.event-info-container{
+		padding:30px 0px;
+		margin:30px 0px;	
+	}
+	
+	.main-header.style-two .lower-section{
+		position:relative;
+		background:#555555;	
+	}
+	
+	.default-blog-post .post-content{
+		padding-top:30px;	
+	}
+	
+	.cart-section .estimate-form{
+		padding:30px 20px;	
+	}
+	
+	.cart-section .calc-table .data-row{
+		padding-left:0px;	
+	}
+	
+	.default-image-section .image-column{
+		display:none;	
+	}
+	
+	.custom-bg-section .custom-slider h2{
+		font-size:26px;	
+	}
+	
+}
+
+@media only screen and (max-width: 599px){
+	
+	.main-header .outer-box .logo{
+		float:none;
+		width:100%;
+		text-align:center;
+		margin-bottom:10px;
+	}
+	
+	.main-header .nav-toggler{
+		position:relative;
+		float:right;
+		margin:0px 0px 20px;
+		right:0px;
+		top:0px;	
+	}
+	
+	.main-header .outer-box{
+		padding-right:0px !important;	
+	}
+	
+	.main-header .outer-box .clearfix.hidden{
+		display:block !important;	
+	}
+	
+	.main-header .cart-box{
+		position:relative !important;
+		right:0px;
+		float:left;
+		padding:0px 0px 20px !important;
+	}
+	
+	.main-header .cart-dropdown{
+		right:auto;
+		left:0px;	
+	}
+	
+	.recent-posts-thumbs .recent-post-thumb h3{
+		font-size:12px;	
+	}
+	
+	.featured-story-column .overlay-box h4,
+	.featured-story-column .overlay-box .desc-text{
+		display:none;	
+	}
+	
+	.custom-bg-section .content-outer{
+		padding:50px 0px;	
+	}
+	
+	.featured-story-column .overlay-box h2,
+	.section-title h2{
+		font-size:30px;	
+	}
+	
+	.story-info-column .bigger-title{
+		font-size:18px;
+		line-height:1.6em;
+	}
+	
+	.story-info-column{
+		padding:30px 15px;	
+	}
+	
+	.main-header .top-bar .top-left li,
+	.main-header .top-bar .right-nav li{
+		margin:0px 20px 0px 0px;	
+	}
+	
+	.main-header .top-bar .top-left li:after,
+	.main-header .top-bar .right-nav li:after{
+		display:none;	
+	}
+	
+	.event-info-container .countdown-column .countdown .counter-column{
+		width:50%;
+	}
+	
+	.single-post-section .single-post-header .header-content{
+		padding:40px 15px;	
+	}
+	
+	.page-title-section .page-title h2{
+		margin:5px 0px 20px;
+		font-size:26px;	
+	}
+	
+	.specific-donors .over-box{
+		padding:30px 20px 20px;	
+	}
+	
+	.gallery-section .filter-btns{
+		padding:5px;
+		display:block;
+		border-radius:5px;		
+	}
+	
+	.gallery-section .filter-tabs li{
+		display:block;
+		float:none;
+		width:100%;	
+	}
+	
+	.default-portfolio-item .overlay-box .inner-content{
+		padding:10px 15px;	
+	}
+	
+	.default-portfolio-item .overlay-box h3{
+		font-size:12px;
+		margin:0px;	
+	}
+	
+	.custom-bg-section .custom-slider .slide-content{
+		margin:0 20px auto;	
+	}
+	
+	.custom-bg-section .bx-controls{
+		display:none;	
+	}
+	
+	.default-story-column .overlay-box .bg-box{
+		padding:15px;	
+	}
+	
+	.default-story-column .overlay-box ul{
+		display:none;	
+	}
+	
+	.become-volunteer-column .overlay-box{
+		padding:30px 15px;	
+	}
+	
+	.become-volunteer-column .content-box h2{
+		font-size:28px;	
+	}
+	
+	.become-volunteer-column .content-box .lower-content{
+		padding-left:0px;	
+	}
+	
+	.become-volunteer-column .content-box .lower-content .apply-btn{
+		position:relative;	
+	}
+	
+	.vertical-green-bar .upper-part{
+		padding:40px 20px;	
+	}
+}
+
+@media only screen and (max-width: 479px){
+	
+	
+	.sponsor-organization .column{
+		width:100%;	
+	}
+	
+	
+}

@@ -1,4 +1,8 @@
-$(function(e) {
+(function($){
+
+ "use strict"; // Start of use strict
+
+$(function() {
     "use strict";
     // Just the defaults.
     $("span.pie").peity("pie",{
@@ -14,16 +18,12 @@ $(function(e) {
 
     $(".peity-line").peity("line",{
         width: '100%',
-        height: '80'
+        height: '100'
     })
 
     $(".bar").peity("bar",{
         width: '100%',
-        height: '60'
-    })
-	$(".bar-chart").peity("bar",{
-        width: '100%',
-        height: '30'
+        height: '50'
     })
 
     $(".bar-colours-1").peity("bar", {
@@ -82,10 +82,10 @@ $(function(e) {
     $("span.graph").peity("pie")
 
     // Updating charts.
-    var updatingChart = $(".updating-chart").peity("line", { width: "100%",height:80 })
+    var updatingChart = $(".updating-chart").peity("line", { width: "100%",height:150 })
 
     setInterval(function() {
-        var random = Math.round(Math.random() * 10)
+        var random = Math.round(Math.random() * 20)
         var values = updatingChart.text().split(",")
         values.shift()
         values.push(random)
@@ -94,5 +94,7 @@ $(function(e) {
             .text(values.join(","))
             .change()
     }, 2500)
-	
-});
+})
+
+
+})(jQuery);

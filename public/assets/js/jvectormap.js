@@ -1,3 +1,11 @@
+/**
+ * Template Name: EON Admin 
+ * Author: Spruko Technologies 
+ * Email: sprukotechnologies@gmail.com
+ * Description: An Admin Bootstrap-4 Dashboard template
+ * VectorMap
+ */
+
 ! function($) {
 	"use strict";
 
@@ -8,19 +16,19 @@
 		//various examples
 		$('#world-map-markers').vectorMap({
 			map : 'world_mill_en',
-			scaleColors : ['#5d61bf', '#f47b25'],
+			scaleColors : ['#04A8FB', '#871faf'],
 			normalizeFunction : 'polynomial',
 			hoverOpacity : 0.7,
 			hoverColor : false,
 			regionStyle : {
 				initial : {
-					fill : '#dddbe2'
+					fill : '#e0e8f5'
 				}
 			},
 			 markerStyle: {
                 initial: {
                     r: 9,
-                    'fill': '#ad59ff',
+                    'fill': '#04A8FB',
                     'fill-opacity': 0.9,
                     'stroke': '#fff',
                     'stroke-width' : 9,
@@ -121,7 +129,7 @@
 			backgroundColor : 'transparent',
 			regionStyle : {
 				initial : {
-					fill : '#f47b25'
+					fill : '#04A8FB'
 				}
 			}
 		});
@@ -131,7 +139,7 @@
 			backgroundColor : 'transparent',
 			regionStyle : {
 				initial : {
-					fill : '#ad59ff'
+					fill : '#4351a3'
 				}
 			}
 		});
@@ -142,7 +150,7 @@
 			backgroundColor : 'transparent',
 			regionStyle : {
 				initial : {
-					fill : '#3ebaef'
+					fill : '#871faf'
 				}
 			}
 		});
@@ -153,7 +161,7 @@
 			backgroundColor : 'transparent',
 			regionStyle : {
 				initial : {
-					fill : '#31c92e'
+					fill : '#871faf'
 				}
 			}
 		});
@@ -162,8 +170,11 @@
 	},
 	//init
 	$.VectorMap = new VectorMap, $.VectorMap.Constructor =
-	VectorMap;
-	$.VectorMap.init();
+	VectorMap
+}(window.jQuery),
+
+//initializing
+function($) {
+	"use strict";
+	$.VectorMap.init()
 }(window.jQuery);
-
-

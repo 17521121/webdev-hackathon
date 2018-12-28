@@ -1,0 +1,10 @@
+#main-image-box{
+    text-align: center;
+    background: radial-gradient(#fffbfb, #6f6f65);
+    padding: 10px;
+}
+#main-image-box>img{
+    max-height: 500px;
+    width: auto;
+    margin: auto;
+}
