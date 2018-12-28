@@ -1,0 +1,50 @@
+@media only screen and (max-width: 992px) {
+    .headline {
+        font-size: 80px;
+        letter-spacing: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .vcenter,
+    .footer-area {
+        position: static;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+    .headline {
+        margin-bottom: 60px;
+        text-align: center;
+    }
+    .headline span {
+        display: inline-block;
+    }
+    header {
+        padding: 50px 0;
+    }
+    .xs-center {
+        text-align: center;
+    }
+    .navbar-header {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .mainmenu-area ul {
+        text-align: center;
+    }
+    .navbar-brand {
+        display: inline-block;
+        float: none;
+        padding: 5px 15px;
+        text-align: center;
+    }
+    .subscribe-form {
+        margin-bottom: 20px;
+    }
+    .subscribe-form .form-box {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+    }
+}
