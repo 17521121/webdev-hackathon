@@ -19,6 +19,6 @@
     "passport-local": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "compress-images": "^1.4.6",
-    "lodash": "^4.17.11"  
+    "lodash": "^4.17.11"
   }
 }

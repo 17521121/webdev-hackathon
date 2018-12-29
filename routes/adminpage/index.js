@@ -1,12 +1,14 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
+var posts = require('./posts');
+var users = require('./users');
 
 router.get('/' ,async (req, res, next) => {
-  return res.render('/adminpage')
+  return res.render('adminpage')
 })
 
-require('./partials')(router)
-require('./posts')(router)
-require('./users')(router)
+
+require('./posts')(router);
+require('./users')(router);
 
 module.exports = router;

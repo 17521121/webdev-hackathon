@@ -20,7 +20,7 @@ var teams = new mongoose.Schema({
     default: false
   },
   submissions: [{
-    year: Date.year,
+    year: Date,
     semester: Number,
     score: Number,
     path: String,
