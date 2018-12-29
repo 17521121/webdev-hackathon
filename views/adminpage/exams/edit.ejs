@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <% include ../partials/header %>
+    <link
+      href="/assets/plugins/datatable/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/summernote.css" rel="stylesheet" />
+    <link
+      href="/assets/plugins/fileuploads/css/dropify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="">
+    <div id="global-loader"></div>
+    <div class="page">
+      <div class="page-main">
+        <% include ../partials/headerBar %>
+        <% include ../partials/navbar %>
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="page-header">
+              <h4 class="page-title">Đề Thi</h4>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <form method="post" class="card" action="/admin/de-thi/<%- test._id %>/edit">
+                  <div class="card-header">
+                    <h3 class="card-title">Sửa đề thi</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-12">
+                        <div class="form-group">
+                          <label class="form-label">Tiêu đề</label>
+                          <input class="form-control" name="title" value='<%- test.title %>'/>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Học kì</label>
+                          <select name='semester' class="form-control" value='<%- test.semester %>'>
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Vòng</label>
+                          <input name='round' class="form-control" value='<%- test.round %>'>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Hạn nộp bài</label>
+                          <input type="datetime-local" name="deadline" class="form-control" value='<%- test.deadline %>'>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">Nội dung đề thi</label>
+                          <input id="summernote" name="content"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-right">
+                    <div class="d-flex">
+                      <a href="javascript:void(0)" class="btn btn-link">Thoát</a>
+                      <button type="submit" class="btn btn-primary ml-auto">Lưu</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% include ../partials/footer %>
+    </div>
+
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top" style="display: inline;"
+      ><i class="fa fa-angle-up"></i
+    ></a>
+
+    <% include ../partials/scripts %>
+    <!-- Data tables -->
+    <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="/assets/summernote.js"></script>
+    <script>
+      function saveFile(file, editor, welEditable) {
+        $.map(file, function(item, index) {
+          let data = new FormData();
+          data.append("image", item);
+          $.ajax({
+            data: data,
+            type: "POST",
+            url: "/api/upload/image",
+            contentType: false,
+            processData: false,
+            success: function(url) {
+              $("#summernote").summernote("insertImage", url.link);
+            }
+          });
+        });
+      }
+      $(function(e) {
+        $("#example").DataTable();
+      });
+      $("#summernote").summernote({
+        tabsize: 2,
+        minHeight: 200,
+        maxHeight: 450,
+        focus: true,
+        callbacks: {
+          onImageUpload: function(file, editor, welEditable) {
+            saveFile(file, editor, welEditable);
+          },
+          onChange: function (contents, $editable) {
+            $(this).val(contents);
+          }
+        }
+      });
+    $('#summernote').val($('#summernote').code());
+    
+    </script>
+    <script>
+    $(document).ready(function() {
+        $("#summernote").summernote('editor.pasteHTML', '<%- test.content %>');
+      })
+    </script>
+    
+  </body>
+</html>

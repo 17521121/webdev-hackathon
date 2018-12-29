@@ -1,20 +1,24 @@
 var mongoose = require('mongoose');
 
 var testContents = new mongoose.Schema({
+  title: {
+    type: String,
+    require: true
+  },
   content: {
     type: String,
     require: true
   },
   year: {
     type: Date,
-    require: true
+    default: new Date()
   },
   semester: {
     type: Number,
     require: true
   },
   deadline: {
-    type: Date,
+    type: String,
     require: true
   },
   round: {
