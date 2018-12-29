@@ -6,7 +6,7 @@ var testContents = new mongoose.Schema({
     require: true
   },
   year: {
-    type: Date.year,
+    type: Date,
     require: true
   },
   semester: {
