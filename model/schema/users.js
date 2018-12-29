@@ -9,7 +9,10 @@ var users = new mongoose.Schema({
     required: true,
     type: String,
   },
-  name: {
+  roles: [{
+    type: String
+  }],
+  fullname: {
     required: true,
     type: String
   }

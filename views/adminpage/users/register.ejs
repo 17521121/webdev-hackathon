@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <% include ../partials/header %>
+</head>
+
+<body class="login-img">
+    <div class="page">
+        <div class="page-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col mx-auto">
+                        <div class="text-center mb-6">
+                            <img src="/assets/images/brand/logo.png" class="" alt="">
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="card-group mb-0">
+                                    <div class="card p-4">
+                                        <form action='/admin/dang-ki' method='post'>
+                                            <div class="card-body">
+                                                <h1>Đăng kí</h1>
+                                                <p class="text-muted">Nhập thông tin tài khoản</p>
+                                                <div class="input-group mb-3">
+                                                    <label for="name" style='width: 100%'>Tên đầy đủ của bạn </label>
+                                                    <span class="input-group-addon"><i class="fa fa-user-o"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Nguyễn Văn A" name="fullname" required>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <label for="username" style='width: 100%'>Nhập tên đăng nhập</label>
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Username" name="username" required>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <label for="password" style='width: 100%'>Nhập mật khẩu</label>
+                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                    <input type="password" class="form-control" placeholder="Password" required
+                                                        name="password">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <button type="submit" id='new_user' class="btn btn-primary btn-block">Đăng kí</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Dashboard js -->
+    <script src="/assets/js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/vendors/jquery.sparkline.min.js"></script>
+    <script src="/assets/js/vendors/selectize.min.js"></script>
+    <script src="/assets/js/vendors/jquery.tablesorter.min.js"></script>
+    <script src="/assets/js/vendors/circle-progress.min.js"></script>
+    <script src="/assets/plugins/rating/jquery.rating-stars.js"></script>
+    <!-- Custom scroll bar Js-->
+    <script src="/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+        $('#new_user').on('submit', function (e) {
+            e.preventDefault();
+            var name = $('input[name="name"]').val();
+            var username = $('input[name="username"]').val();
+            var password = $('input[name="password"]').val();
+            $.ajax({
+                url: '/admin/dang-ki',
+                type: 'post',
+                data: { name: name, username: username, password: password },
+                success: function(result) {
+                        location.reload();
+                },
+                error: function(error) {
+                    console.log("Sai gì đó");
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
