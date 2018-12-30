@@ -19,9 +19,30 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30 days' }));
+app.set('Cache-Control', 'max-age=3000');
 
-//require('./config/passport')(passport);
+
+app.use(
+  session({
+    name: 'anti_theft_projector',
+    proxy: true,
+    resave: true,
+    secret: "anti_theft_projector.secrect", // session secret
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false /*Use 'true' without setting up HTTPS will result in redirect errors*/,
+    }
+  })
+);
+
+
+//PassportJS middleware
+app.use(passport.initialize());
+app.use(passport.session()); //persistent login sessions
+
+require('./config/passport')(passport);
 require('./routes')(app);
 
 

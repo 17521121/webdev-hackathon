@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <% include ../partials/header %>
+    <link href="/assets/plugins/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+  </head>
+  <body class="">
+    <div id="global-loader"></div>
+    <div class="page">
+      <div class="page-main">
+        <% include ../partials/headerBar %> <% include ../partials/navbar %>
+
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="page-header">
+              <h4 class="page-title">CTV</h4>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                  Bảng cộng tác viên
+                </li>
+              </ol>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-6">
+                        <div class="card-title">Cộng Tác Viên</div>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <a class="btn btn-outline-primary" href="/admin/dang-ki">Thêm cộng tác viên</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="example"
+                        class="table table-striped table-bordered"
+                        style="width:100%">
+                        <thead>
+                          <tr>
+                            <th class="wc-20">Tên cộng tác viên</th>
+                            <th class="wc-15">Tên đăng nhập</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% users.map(item => { %>
+                            <tr>
+                            <td><%- item.fullname %></td>
+                            <td><%- item.username %></td>
+                          </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <!-- table-wrapper -->
+                </div>
+                <!-- section-wrapper -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% include ../partials/footer %>
+    </div>
+
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top" style="display: inline;"
+      ><i class="fa fa-angle-up"></i
+    ></a>
+    <% include ../partials/scripts %>
+    <!-- Data tables -->
+    <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+  </body>
+</html>
