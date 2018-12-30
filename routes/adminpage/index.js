@@ -12,4 +12,5 @@ require('./login')(router);
 require('./posts')(router);
 require('./users')(router);
 require('./exams')(router);
+require('./teams')(router);
 module.exports = router;
