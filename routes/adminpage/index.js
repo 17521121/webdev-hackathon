@@ -7,6 +7,7 @@ router.get('/', checkPermission(IS_USER), async (req, res, next) => {
   return res.render('adminpage')
 })
 
+require('./teams')(router);
 require('./login')(router);
 require('./posts')(router);
 require('./users')(router);

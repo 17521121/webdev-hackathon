@@ -11,7 +11,7 @@ var teams = new mongoose.Schema({
   },
   member: [{
     name: String,
-    mssv: String,
+    MSSV: String,
     phone: String,
     school: String
   }],
@@ -24,6 +24,7 @@ var teams = new mongoose.Schema({
     semester: Number,
     score: Number,
     path: String,
+    round: Number,
     judge: [{
       userId: {
         type: mongoose.Schema.Types.ObjectId,

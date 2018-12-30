@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from www.spruko.com/demo/plight/html/Horizontal-Light-Headerfix/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Nov 2018 06:49:41 GMT -->
+
+<head>
+	<% include ./../partials/header %>
+	<link href="/assets/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="">
+	<div id="global-loader"></div>
+	<div class="page">
+		<div class="page-main">
+			<% include ./../partials/headerBar %>
+			<% include ./../partials/navbar %>
+		</div>
+		<div class="my-3 my-md-5">
+			<div class="container">
+				<div class="page-header">
+					<h4 class="page-title">Thêm thí sinh</h4>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<form method="post" class="card" action="/admin/thi-sinh/<%- teams._id %>" enctype="multipart/form-data">
+							<div class="card-header">
+								<h3 class="card-title">Thông tin thí sinh</h3>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12 col-lg-12">
+										<div class="form-group">
+											<label class="form-label">Tên thí sinh</label>
+											<input type="text" class="form-control" name="name" placeholder="Name" value="<%- teams.name %>">
+										</div>
+										<div class="form-group">
+											<label class="form-label">Mô tả</label>
+											<textarea class="form-control" name="description" rows="6" placeholder="text here.."><%- teams.description %></textarea>
+										</div>
+										<div class="form-group">
+											<label class="form-label">Loại thí sinh</label>
+											<input type="text" class="form-control" name="type" placeholder="không để mặc định là none" value="<%- teams.type %>">
+										</div>
+										<div class="form-group">
+											<label class="form-label">Giá (vnđ)</label>
+											<input type="text" class="form-control is-valid state-valid" name="prices" value="<%- teams.prices %>"
+											 placeholder="prices">
+										</div>
+										<div class="form-group d-none">
+											<input type="text" display="none" id="inputImgLink" name="ImgLink">
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-header">
+											<h3 class="card-title">Hình minh họa</h3>
+										</div>
+										<div class=" card-body">
+											<% include ./loadImage %>
+										</div>
+										<br>
+										<div class="form-group">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" name="imageLink">
+												<label class="custom-file-label">Chọn hình</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-footer text-right">
+									<div class="d-flex">
+										<a href="javascript:void(0)" class="btn btn-link">Thoát</a>
+										<button type="submit" id="submitEditData"class="btn btn-primary ml-auto">Lưu</button>
+									</div>
+								</div>
+						</form>
+
+
+
+					</div>
+
+					<!--footer-->
+					<% include ./../partials/footer %>
+					<!-- End Footer-->
+				</div>
+
+				<!-- Back to top -->
+				<a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+				<!-- Dashboard Css -->
+				<% include ./../partials/scripts %>
+				<script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+				<script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+				<script src="/assets/plugins/fileuploads/js/dropify.js"></script>
+				<script src="/assets/js/sendLinkImage.js"></script>
+				<script>
+					$('.dropify').dropify({
+						messages: {
+							'default': 'Drag and drop a file here or click',
+							'replace': 'Drag and drop or click to replace',
+							'remove': 'Remove',
+							'error': 'Ooops, something wrong appended.'
+						},
+						error: {
+							'fileSize': 'The file size is too big (2M max).'
+						}
+					});
+				</script>
+
+</body>
+
+<!-- Mirrored from www.spruko.com/demo/plight/html/Horizontal-Light-Headerfix/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Nov 2018 06:49:45 GMT -->
+
+</html>
