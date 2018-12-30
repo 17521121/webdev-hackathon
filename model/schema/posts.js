@@ -13,6 +13,10 @@ var posts = new mongoose.Schema({
     type: String,
     default: ""
   },
+  createdDate: {
+    type: Date,
+    require: true
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
