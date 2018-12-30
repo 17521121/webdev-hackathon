@@ -13,33 +13,68 @@ router.get('/', async (req, res, next) => {
   return success(res, "Done", usersInfo)
 });
 
-router.get('/insert-buyer', async (req, res, next) => {
+router.get('/deleteHaha', async (req, res, next) => {
+  let tems = await mongoose.model('teams').find();
+    for(const tem of tems){
+      await mongoose.model('teams').findOneAndDelete({ _id: tem._id});
+    }
+     //mongoose.model('teams').findOneAndDelete({ _id: tem._id});
+  
+  return res.redirect('/admin/doi/vong-1');
+});
+router.get('/insert-team', async (req, res, next) => {
   let insert = {
-    name: "Nguyễn Ngọc Phong",
-    location:"KTX ĐHQG",
-    numberPhone:"0123456789"
+    teamName: "team 1",
+    leaderId: '17520747',
+    member: [
+    {phone: '0869', mssv: '17520747', name: 'Minh', school: 'UIT'},
+    {phone: '1', mssv: '1', name: 'Minh', school: 'ussh'},
+    {phone: '2', mssv: '2', name: 'Ninh', school: 'ussh'},
+    ],
+    isPaid: true,
+    submissions:[{
+      year: 2018,
+      semester: 1,
+      score: 9,
+      path: ''
+    },
+    {
+        year: 2017,
+        semester: 2,
+        score: 5,
+        path: ''
+    }]
   }
-  let buyerInfo = await mongoose.model('buyers').create(insert);
-  return success(res, "Done", buyerInfo)
+  let buyerInfo = await mongoose.model('teams').create(insert);
+  return res.redirect('../admin/doi/vong-1');
 });
 
-router.get('/insert-product', async (req, res, next) => {
-  try {
-    for(var i = 0; i< 20; i++){
-      var productName = "Vòng đeo tay "+ i;
-      let insert = {
-        name: productName,
-        description: "<h1>Vòng Đeo Tay</h1>Mô tả cho vòng đeo tay",
-        prices: 12000,
-        imageLink: "http://www.thaonguyengift.com/wp-content/uploads/2018/10/VONG-DEO-TAY-FAMIANA-01--270x330.jpg"
-      }
-      let productInfo = await mongoose.model('products').create(insert);
-    }
-  } catch (error) {
-    console.log(error)
+router.get('/insert-team2', async (req, res, next) => {
+  let insert = {
+    teamName: "team 2",
+    leaderId: '887',
+    member: [
+    {phone: '1', mssv: '887', name: 'Minh', school: 'UIT'},
+    {phone: '2', mssv: '12', name: 'haha', school: 'ussh'},
+    {phone: '3', mssv: '22', name: 'Ninh', school: 'UI'},
+    {phone: '4', mssv: '221', name: 'Ninh', school: 'ussh'},
+    ],
+    isPaid: false,
+    submissions:[{
+      year: 2018,
+      semester: 1,
+      score: 9,
+      path: ''
+    },
+    {
+        year: 2017,
+        semester: 2,
+        score: 5,
+        path: ''
+    }]
   }
-
-  return success(res, "Done", await mongoose.model('products').find())
+  let buyerInfo = await mongoose.model('teams').create(insert);
+  return res.redirect('../admin/doi/vong-1');
 });
 
 module.exports = router

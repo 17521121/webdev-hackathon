@@ -9,4 +9,5 @@ router.get('/' ,async (req, res, next) => {
 require('./posts')(router);
 require('./users')(router);
 require('./exams')(router);
+require('./teams')(router);
 module.exports = router;
