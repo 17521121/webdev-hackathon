@@ -1,1 +1,82 @@
-chưa có
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <% include ../partials/header %>
+    <link
+      href="/assets/plugins/datatable/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="">
+    <div id="global-loader"></div>
+    <div class="page">
+      <div class="page-main">
+        <% include ../partials/headerBar %>
+        <% include ../partials/navbar %>
+
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="page-header">
+              <h4 class="page-title">Đề Thi</h4>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-12 text-center">
+                        <h3><%- test.title %></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <% let date = new Date(Date.parse(test.deadline)) %>
+                    <h3>Năm: <%- test.year.getFullYear()%></h3>
+                    <h3>Deadline: <%- date.getHours() %>:<%- date.getMinutes() %>  <%- date.getDate() %>/<%- date.getMonth() + 1 %>/<%- date.getFullYear() %></h3>
+                    <%- test.content %>
+                  </div>
+                  
+                  <!-- table-wrapper -->
+                </div>
+                <div class="col-md-12 text-right">
+                  <a type="button" class="btn btn-icon btn-primary" href="/admin/de-thi/<%- test._id %>/edit" 
+                    style="
+                        width: 100px;
+                        padding: 10px;
+                        border-radius: 10px;
+                        -webkit-appearance: button-bevel;
+                    ">Sửa</a>
+                  </div>
+                <!-- section-wrapper -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% include ../partials/footer %>
+    </div>
+
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top" style="display: inline;"
+      ><i class="fa fa-angle-up"></i
+    ></a>
+
+    <% include ../partials/scripts %>
+    <!-- Data tables -->
+    <script>
+      var selectedId = "";
+    </script>
+    <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(function(e) {
+        $("#example").DataTable();
+      });
+      function selectedId(id) {
+        selectedId = id;
+      }
+      
+    </script>
+  </body>
+</html>

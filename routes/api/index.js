@@ -1,6 +1,5 @@
 var router = require('express').Router();
-var mongoose = require('mongoose');
 
-
+require('./uploadFile')(router);
 
 module.exports = router;

@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
-var uploadFile = require('../../../services/uploadFile');
 var { success, errorProcess } = require('../../../services/returnToUser');
 
-var uploadImage = uploadFile.uploadFile('images');
 
 module.exports = router => {
     router.get('/de-thi', async (req, res, next) => {
