@@ -1,355 +1,226 @@
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/header%>
+
+<body>
 	
-<head>
-  <% include ./partials/header %>
-</head>
-	<body class="" >
-		<div id="global-loader" ></div>
-		<div class="page">
-			<div class="page-main">
-				
-				<% include ./partials/headerBar %>
-				<% include ./partials/navbar %>
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Preload -->
 
-				<div class="my-3 my-md-5">
-					<div class="container">
-						<div class="page-header">
-							<h4 class="page-title">Dashboard</h4>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Dashboard 01</li>
-							</ol>
-						</div>
+	<header>
+		<div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <a href="index.html"><img src="/homepage/img/logo.png" alt="" width="50" height="35" data-retina="true"></a>
+                </div>
+                <div class="col-9">
+                    <div id="social">
+                        <ul>
+                            <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#0"><i class="icon-google"></i></a></li>
+                            <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /social -->
+                    <nav>
+                        <ul class="cd-primary-nav">
+                            <li><a href="index.html" class="animated_link">Register Version</a></li>
+                            <li><a href="reservation_version.html" class="animated_link">Reservation Version</a></li>
+                            <li><a href="questionare_version.html" class="animated_link">Questionare Version</a></li>
+                            <li><a href="review_version.html" class="animated_link">Review Version</a></li>
+                            <li><a href="about.html" class="animated_link">About Us</a></li>
+                            <li><a href="contacts.html" class="animated_link">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+		</div>
+		<!-- container -->
+	</header>
+	<!-- End Header -->
+	
+	<!-- SubHeader =============================================== -->
+	<section class="parallax_window_in" data-parallax="scroll" data-image-src="/homepage/img/sub_header_about.jpg" data-natural-width="1400" data-natural-height="470">
+		<div id="sub_content_in">
+			<h1>About Mavia</h1>
+			<p>"Usu habeo equidem sanctus no ex melius labitur conceptam eos"</p>
+		</div>
+	</section>
+	<!-- End section -->
+	<!-- End SubHeader ============================================ -->
 
-						<div class="row row-cards">
-							<div class="col-sm-12 col-lg-6 col-xl-3">
-								<div class="card card-img-holder">
-									<div class="card-body list-icons">
-										<div class="clearfix">
-											<div class="float-left  mt-2">
-												<span class="text-warning ">
-													<i class="si si-basket-loaded "></i>
-												</span>
-											</div>
-											<div class="float-right text-right">
-												<p class="card-text text-muted font-weight-semibold mb-1">Orders</p>
-												<h2>656</h2>
-											</div>
-										</div>
-										<div class="card-footer p-0">
-											<p class="text-muted mb-0 pt-4"><i class="si si-arrow-down-circle text-warning mr-1" aria-hidden="true"></i> Today Orders</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-lg-6 col-xl-3">
-								<div class="card card-img-holder">
-									<div class="card-body list-icons">
-										<div class="clearfix">
-											<div class="float-left  mt-2">
-												<span class="text-success ">
-													<i class="si si-credit-card "></i>
-												</span>
-											</div>
-											<div class="float-right text-right">
-												<p class="card-text text-muted font-weight-semibold mb-1">Tổng</p>
-												<h2><%= total %></h2>
-											</div>
-										</div>
-										<div class="card-footer p-0">
-											<p class="text-muted mb-0 pt-4"><i class="si si-arrow-up-circle text-success mr-1"></i>Tổng tiền bán được</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-lg-6 col-xl-3">
-								<div class="card card-img-holder">
-									<div class="card-body list-icons">
-										<div class="clearfix">
-											<div class="float-left  mt-2">
-												<span class="text-info ">
-													<i class="si si-chart"></i>
-												</span>
-											</div>
-											<div class="float-right text-right">
-												<p class="card-text text-muted font-weight-semibold mb-1">Profit</p>
-												<h2>65%</h2>
-											</div>
-										</div>
-										<div class="card-footer p-0">
-											<p class="text-muted mb-0 pt-4"><i class="si si-exclamation text-info mr-1" ></i>Today profit</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-lg-6 col-xl-3">
-								<div class="card card-img-holder">
-									<div class="card-body list-icons">
-										<div class="clearfix">
-											<div class="float-left  mt-2">
-												<span class="text-primary ">
-													<i class="si si-social-facebook "></i>
-												</span>
-											</div>
-											<div class="float-right text-right">
-												<p class="card-text text-muted font-weight-semibold mb-1">Followers</p>
-												<h2>65K</h2>
-											</div>
-										</div>
-										<div class="card-footer p-0">
-											<p class="text-muted mb-0 pt-4"><i class="si si-check mr-1 text-primary" ></i> Recent Activities</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row row-deck">
-							<div class="col-lg-12 col-sm-12">
-								<div class="card ">
-									<div class="card-header">
-										<h3 class="card-title">Company Growth Yearly</h3>
-										<div class="card-options ">
-											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-										</div>
-									</div>
-									<div class="card-body">
-										<div id="echart1" class="chartsh chart-dropshadow"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-sm-12">
-								<div class="card ">
-									<div class="card-header">
-										<div class="card-title">Monthly View</div>
-										<div class="card-options ">
-											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-										</div>
-									</div>
-									<div class="card-body p-4">
-										<div class="chats-wrap">
-											<div class="chat-details mb-1 p-3">
-												<h4 class="mb-0">
-													<span class="h5 font-weight-normal">Sales</span>
-													<span class="float-right p-1 bg-primary btn btn-sm text-white">
-													<b>70</b>%</span>
-												</h4>
-												<div class="progress progress-md mt-3">
-													<div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 70%"></div>
-												</div>
-											</div>
-											<div class="chat-details mb-1 p-3">
-												<h4 class="mb-0">
-													<span class="h5 font-weight-normal">Profit</span>
-													<span class="float-right p-1 bg-secondary  btn btn-sm text-white">
-														<b>60</b>%</span>
-												</h4>
-												<div class="progress progress-md mt-3">
-													<div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" style="width: 60%"></div>
-												</div>
-											</div>
-											<div class="chat-details mb-1 p-3">
-												<h4 class="mb-0">
-													<span class="h5 font-weight-normal">Users</span>
-													<span class="float-right p-1 bg-cyan btn btn-sm text-white">
-														<b>47%</b>
-													</span>
-												</h4>
-												<div class="progress progress-md mt-3">
-													<div class="progress-bar progress-bar-striped progress-bar-animated bg-cyan" style="width: 47%"></div>
-												</div>
-											</div>
-											<div class="chat-details mb-1 p-3">
-												<h4 class="mb-0">
-													<span class="h5 font-weight-normal">Growth</span>
-													<span class="float-right p-1 bg-danger btn btn-sm text-white">
-														<b>25%</b>
-													</span>
-												</h4>
-												<div class="progress progress-md mt-3">
-													<div class="progress-bar progress-bar-striped progress-bar-animated  bg-danger" style="width: 25%"></div>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-8 col-sm-12">
-								<div class="card ">
-									<div class="card-header">
-										<h3 class="card-title">Daily Vistors</h3>
-										<div class="card-options ">
-											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-										</div>
-									</div>
-									<div class="card-body">
-										<div id="echart8" class="chartsh chart-dropshadow"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row mg-t-20">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header ">
-										<h3 class="card-title ">Projects</h3>
-										<div class="card-options">
-											<button id="add__new__list" type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Add a new Project</button>
-
-										</div>
-									</div>
-									<div class="table-responsive">
-										<table class="table table-hover card-table table-striped table-vcenter table-outline text-nowrap">
-											<thead>
-											  <tr>
-												<th scope="col">ID</th>
-												<th scope="col">Project Name</th>
-												<th scope="col">Backend</th>
-												<th scope="col">Deadline</th>
-												<th scope="col">Team Members</th>
-												<th scope="col">Edit Project Details </th>
-												<th scope="col">list info</th>
-											  </tr>
-											</thead>
-											<tbody>
-											  <tr>
-												<th scope="row">1</th>
-												<td>At vero eos et accusamus et iusto odio</td>
-												<td>PHP</td>
-												<td>15/11/2018</td>
-												<td>15 Members</td>
-												<td>
-													<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
-													<a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
-												</td>
-												<td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-info-circle"></i> Details</a> </td>
-											  </tr>
-											  <tr>
-												<th scope="row">2</th>
-												<td>voluptatum deleniti atque corrupti quos</td>
-												<td>Angular js</td>
-												<td>25/11/2018</td>
-												<td>12 Members</td>
-												<td>
-													<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
-													<a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
-												</td>
-												<td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-info-circle"></i> Details</a> </td>
-											  </tr>
-											  <tr>
-												<th scope="row">3</th>
-												<td >dignissimos ducimus qui blanditiis praesentium </td>
-												<td >Java</td>
-												<td >5/12/2018</td>
-												<td >20 Members</td>
-												<td>
-													<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
-													<a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
-												</td>
-												<td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-info-circle"></i> Details</a> </td>
-											  </tr>
-											  <tr>
-												<th scope="row">4</th>
-												<td >deleniti atque corrupti quos dolores  </td>
-												<td >Phython</td>
-												<td >14/12/2018</td>
-												<td >10 Members</td>
-												<td>
-													<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
-													<a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
-												</td>
-												<td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-info-circle"></i> Details</a> </td>
-											  </tr>
-											  <tr>
-												<th scope="row">5</th>
-												<td >et quas molestias excepturi sint occaecati</td>
-												<td >Phython</td>
-												<td >4/12/2018</td>
-												<td >17 Members</td>
-												<td>
-													<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
-													<a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
-												</td>
-												<td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-info-circle"></i> Details</a> </td>
-											  </tr>
-											</tbody>
-										  </table>
-									</div>
-								</div>
-							</div>
-						</div>
+	<main id="general_page">
+		<div class="container_styled_1">
+			<div class="container margin_60_35">
+				<div class="row">
+					<div class="col-lg-6">
+						<h2 class="nomargin_top">Vim ridens<br>eleifend referrentur eu</h2>
+						<p class="lead">Ex graeco nostrud theophrastus nam, cum tibique reprimique ad. Mea omittam electram te, eu cum fastidii sapientem delicatissimi.</p>
+						<p>
+							Ex has nihil liberavisse philosophia. Ne mazim quidam contentiones usu. Id nec <strong>causae periculis </strong>evertitur, stet menandri an pro, his argumentum appellantur eu. An laudem efficiendi has, utinam principes consequat id vel.</p>
+						<p>Ex graeco nostrud theophrastus nam, cum tibique reprimique ad. Mea omittam electram te, eu cum fastidii sapientem delicatissimi. Sed cu eripuit veritus propriae. An eam choro saperet ullamcorper, eam <strong>saperet rationibus</strong> ut. Cu usu tation quaeque vocibus, alterum torquatos persequeris te ius.</p>
+						<h3>Mission</h3>
+						<p>Ex graeco nostrud theophrastus nam, cum tibique reprimique ad. Mea omittam electram te, eu cum fastidii sapientem delicatissimi. Sed cu eripuit veritus propriae. An eam choro saperet ullamcorper, eam <strong>saperet rationibus</strong> ut. Cu usu tation quaeque vocibus, alterum torquatos persequeris te ius.</p>
+					</div>
+					<div class="col-lg-5 ml-lg-5 add_top_30">
+						<img src="/homepage/img/devices_2.png" alt="" class="img-fluid">
 					</div>
 				</div>
+				<!-- End row -->
 			</div>
-
-      <% include ./partials/footer %>
-      
 		</div>
-		<div class="modal  bd-example-modal-lg" tabindex="-1" role="dialog"  aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel2">Enter Project Details</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="card-body">
-						<form>
-							<div class="form-group">
-								<label for="listname">Project name</label>
-								<input type="text" class="form-control" name="listname" id="listname" placeholder="Enter your listname">
-							</div>
-							<div class="form-group">
-								<label for="listname">Backend</label>
-								<select name="Language" id="select-Language" class="form-control custom-select">
-									<option value="ph" data-data="">PHP</option>
-									<option value="aj" data-data="">Angular js</option>
-									<option value="jv" data-data="">Java</option>
-									<option value="nt" data-data="" selected="">.Net</option>
-									<option value="py" data-data="" >Phython</option>
-									<option value="js" data-data="" >Javascript</option>
-									<option value="ui" data-data="" >UI Design</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label >Deadline</label>
-								<input type="Date" name="Date" class="form-control"  >
-							</div>
-							<div class="form-group">
-								<label for="listname">Team Members</label>
-								<input type="text" class="form-control" name="listname" id="listname2" placeholder="How many Team memebers?">
-							</div>
-							<div class="form-group">
-								<label for="listname">Description</label>
-								<textarea class="form-control" name="example-textarea-input" rows="3" placeholder="text here.."></textarea>
-							</div>
-							<div class="form-group">
-								<label>Add a list item</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" name="example-file-input-custom">
-									<label class="custom-file-label">Choose file</label>
+		<div class="container margin_60">
+			<h2 class="main_title"><em></em>Meet Mavia Team</h2>
+			<p class="lead styled">
+				Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie. Sed ad debet scaevola, ne mel lorem legendos.
+			</p>
+			<!--Team Carousel -->
+			<div class="row">
+				<div class="owl-carousel owl-theme team-carousel">
+
+					<div class="team-item">
+						<div class="team-item-img">
+							<img src="/homepage/img/team/team-1.jpg" alt="">
+							<div class="team-item-detail">
+								<div class="team-item-detail-inner">
+									<h4>Mitchell Young</h4>
+									<p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+									<ul class="social">
+										<li><a href="#0"><i class="icon-facebook"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-twitter"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-google"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-linkedin"></i></a>
+										</li>
+									</ul>
+									<a href="#0" class="btn_1 white">View porfile</a>
 								</div>
 							</div>
-							<div class="form-group text-center">
-								<button type="submit" class="btn btn-block btn-primary">Sign in</button>
-							</div>
-						</form>
+						</div>
+						<div class="team-item-info">
+							<h4>Mitchell Young</h4>
+							<p>CEO</p>
+						</div>
 					</div>
+
+					<div class="team-item">
+						<div class="team-item-img">
+							<img src="/homepage/img/team/team-2.jpg" alt="">
+							<div class="team-item-detail">
+								<div class="team-item-detail-inner">
+									<h4>Ronald Green</h4>
+									<p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+									<ul class="social">
+										<li><a href="#0"><i class="icon-facebook"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-twitter"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-google"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-linkedin"></i></a>
+										</li>
+									</ul>
+									<a href="#0" class="btn_1 white">View porfile</a>
+								</div>
+							</div>
+						</div>
+						<div class="team-item-info">
+							<h4>Ronald Green</h4>
+							<p>Business strategy</p>
+						</div>
+					</div>
+
+					<div class="team-item">
+						<div class="team-item-img">
+							<img src="/homepage/img/team/team-3.jpg" alt="">
+							<div class="team-item-detail">
+								<div class="team-item-detail-inner">
+									<h4>Carl Peppard</h4>
+									<p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+									<ul class="social">
+										<li><a href="#0"><i class="icon-facebook"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-twitter"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-google"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-linkedin"></i></a>
+										</li>
+									</ul>
+									<a href="#0" class="btn_1 white">View porfile</a>
+								</div>
+							</div>
+						</div>
+						<div class="team-item-info">
+							<h4>Carl Peppard</h4>
+							<p>General Manager</p>
+						</div>
+					</div>
+
+					<div class="team-item">
+						<div class="team-item-img">
+							<img src="/homepage/img/team/team-4.jpg" alt="">
+							<div class="team-item-detail">
+								<div class="team-item-detail-inner">
+									<h4>Sandra Bullock</h4>
+									<p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+									<ul class="social">
+										<li><a href="#0"><i class="icon-facebook"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-twitter"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-google"></i></a>
+										</li>
+										<li><a href="#0"><i class="icon-linkedin"></i></a>
+										</li>
+									</ul>
+									<a href="#0" class="btn_1 white">View porfile</a>
+								</div>
+							</div>
+						</div>
+						<div class="team-item-info">
+							<h4>Sandra Bullock</h4>
+							<p>Customer support</p>
+						</div>
+					</div>
+
 				</div>
 			</div>
+			<!--End Team Carousel-->
 		</div>
-		<!-- Back to top -->
-		<a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+		<!-- End container -->
+	</main>
+	
+	<footer class="clearfix">
+		<div class="container">
+			<p>© 2018 Mavia</p>
+			<ul>
+				<li><a href="#0" class="animated_link">Purchase this template</a></li>
+				<li><a href="#0" class="animated_link">Terms and conditions</a></li>
+				<li><a href="#0" class="animated_link">Contacts</a></li>
+			</ul>
+		</div>
+	</footer>
+	<!-- end footer-->
 
-		<% include ./partials/scripts %>
+	<div class="cd-overlay-nav">
+		<span></span>
+	</div>
+	<!-- cd-overlay-nav -->
 
-	</body>
+	<div class="cd-overlay-content">
+		<span></span>
+	</div>
+	<!-- cd-overlay-content -->
 
+	<a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+
+	<!-- SCRIPTS -->
+	<% include partials/script%>
+</body>
 </html>

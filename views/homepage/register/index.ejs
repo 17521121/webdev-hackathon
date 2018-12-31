@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%= include ../partials/header%>
+<% include ../partials/header%>
 
 <body>
 	
@@ -53,7 +53,7 @@
 			<div class="row">
 				<div class="col-lg-5">
 					<div id="left_form">
-						<figure><img src="img/registration_bg.svg" alt=""></figure>
+						<figure><img src="/homepage/img/registration_bg.svg" alt=""></figure>
 						<h2>Registration</h2>
 						<p>Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per, lucilius pertinacia eu vel.</p>
 						<a href="#0" id="more_info" data-toggle="modal" data-target="#more-info"><i class="pe-7s-info"></i></a>
@@ -257,17 +257,7 @@
 	<!-- /.modal -->
 
 	<!-- SCRIPTS -->
-	<!-- Jquery-->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<!-- Common script -->
-	<script src="js/common_scripts_min.js"></script>
-	<!-- Wizard script -->
-	<script src="js/registration_wizard_func.js"></script>
-	<!-- Menu script -->
-	<script src="js/velocity.min.js"></script>
-	<script src="js/main.js"></script>
-	<!-- Theme script -->
-	<script src="js/functions.js"></script>
+	<% include ../partials/script%>
 
 </body>
 </html>
