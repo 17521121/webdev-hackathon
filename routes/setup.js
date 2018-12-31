@@ -24,8 +24,8 @@ router.get('/deleteHaha', async (req, res, next) => {
 });
 router.get('/insert-team', async (req, res, next) => {
   let insert = {
-    teamName: "team 1",
-    leaderId: '17520747',
+    teamName: "team 3",
+    leaderId: 'hahaha',
     member: [
     {phone: '0869', MSSV: '17520747', name: 'Minh', school: 'UIT'},
     {phone: '1', MSSV: '1', name: 'Minh', school: 'ussh'},
@@ -35,13 +35,39 @@ router.get('/insert-team', async (req, res, next) => {
     submissions:[{
       year: 2018,
       semester: 1,
-      score: 9,
+      score: 7,
       path: ''
     },
     {
         year: 2017,
         semester: 2,
-        score: 5,
+        score: 10,
+        path: ''
+    }]
+  }
+  let buyerInfo = await mongoose.model('teams').create(insert);
+  return res.redirect('../admin/doi/vong-1');
+});
+
+router.get('/insert-team4', async (req, res, next) => {
+  let insert = {
+    teamName: "team 4",
+    leaderId: 'team',
+    member: [
+    {phone: '0869', mssv: '17520747', name: 'Minh', school: 'UIT'},
+    {phone: '1', mssv: '1', name: 'Minh', school: 'ussh'},
+    {phone: '2', mssv: '2', name: 'Ninh', school: 'ussh'},
+    ],
+    isPaid: true,
+    submissions:[{
+      year: 2018,
+      semester: 1,
+      path: ''
+    },
+    {
+        year: 2017,
+        semester: 2,
+        score: 10,
         path: ''
     }]
   }
