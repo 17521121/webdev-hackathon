@@ -13,4 +13,5 @@ require('./posts')(router);
 require('./users')(router);
 require('./exams')(router);
 require('./teams')(router);
+require('./notify')(router);
 module.exports = router;

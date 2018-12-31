@@ -27,9 +27,9 @@ router.get('/insert-team', async (req, res, next) => {
     teamName: "team 1",
     leaderId: '17520747',
     member: [
-    {phone: '0869', mssv: '17520747', name: 'Minh', school: 'UIT'},
-    {phone: '1', mssv: '1', name: 'Minh', school: 'ussh'},
-    {phone: '2', mssv: '2', name: 'Ninh', school: 'ussh'},
+    {phone: '0869', MSSV: '17520747', name: 'Minh', school: 'UIT'},
+    {phone: '1', MSSV: '1', name: 'Minh', school: 'ussh'},
+    {phone: '2', MSSV: '2', name: 'Ninh', school: 'ussh'},
     ],
     isPaid: true,
     submissions:[{
@@ -54,10 +54,10 @@ router.get('/insert-team2', async (req, res, next) => {
     teamName: "team 2",
     leaderId: '887',
     member: [
-    {phone: '1', mssv: '887', name: 'Minh', school: 'UIT'},
-    {phone: '2', mssv: '12', name: 'haha', school: 'ussh'},
-    {phone: '3', mssv: '22', name: 'Ninh', school: 'UI'},
-    {phone: '4', mssv: '221', name: 'Ninh', school: 'ussh'},
+    {phone: '1', MSSV: '887', name: 'Minh', school: 'UIT'},
+    {phone: '2', MSSV: '12', name: 'haha', school: 'ussh'},
+    {phone: '3', MSSV: '22', name: 'Ninh', school: 'UI'},
+    {phone: '4', MSSV: '221', name: 'Ninh', school: 'ussh'},
     ],
     isPaid: false,
     submissions:[{
