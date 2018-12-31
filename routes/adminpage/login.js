@@ -14,7 +14,7 @@ module.exports = router => {
     (req, res) => {
       if (req.body.remember) {
         req.session.cookie.maxAge = new Date(
-          Date.now() + 30 * 24 * 60 * 60 * 1000
+          Date.now() + 30 * 24 * 60 * 60 * 100000
         ); // Cookie expires after 30 days
       } else {
         req.session.cookie.expires = false; // Cookie expires at end of session

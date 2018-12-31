@@ -13,7 +13,7 @@
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
-              <h4 class="page-title">Đề Thi</h4>
+              <h4 class="page-title">Quản lý đội thi</h4>
             </div>
             <div class="row">
               <div class="col-md-12 col-lg-12">
@@ -33,12 +33,11 @@
                             <th class="wc-15">Tên đội</th>
                             <th class="wc-15">Đội trưởng</th>
                             <th class="wc-15">Số Điện Thoại</th>
-                            <% if(option == 'vong-1'){ %>
-                                <th class="wc-10">Điểm Vòng 1</th>
+                            <% if(option == 'trang-thai'){ %>
                                 <th class="wc-10">Trạng Thái</th>
                             <% } else { %>
-                                <th class="wc-10">Điểm Vòng 1</th>
-                                <th class="wc-10">Điểm Vòng 2</th>
+                                <th class="wc-10">Điểm 1</th>
+                                <th class="wc-10">Điểm 2</th>
                             <% } %>
                             <th class="wc-10">Hành Động</th>
                           </tr>
@@ -49,32 +48,33 @@
                             <td><%- team.teamName %></td>
                             <td><%- team.leaderId %></td>
                             <td><%- team.member[0].phone %></td>
-                            <% if(option == 'vong-1') { %>
-                                <td class="wc-10"><%- team.submissions[0].score %></td>
+                            <% if(option == 'trang-thai') { %>
                                 <% if(team.isPaid == true) { %>
-                                    
-                                    <td class="wc-10 text-center"><i class='fe fe-check' style="
+                                    <td class="text-center"><i class='fe fe-check' style="
                                                                                                 color: green;
                                                                                                 font-size: 32px;
                                                                                                 font-weight: bolder;
                                                                                                 "></i></td>
                                 <% } else { %>    
-                                    <td class="wc-10 text-center"><i id="<%- team._id %>" class='fe fe-minus' style="
+                                    <td class="text-center"><i id="<%- team._id %>" class='fe fe-minus' style="
                                                                                                 color: red;
                                                                                                 font-size: 32px;
                                                                                                 font-weight: bolder;
                                                                                                 "></i></td>
                                 <% disable = 'enabled'; } %>   
                             <% } else { %>
-                                <td class="wc-10"><%- team.submissions[0].score %></td>
-                                <td class="wc-10"><%- team.submissions[1].score %></td>
+                                
+                                <td class="text-center"><%- team.submissions[0].score %></td>
+                                <td class="text-center"><%- team.submissions[1].score %></td>
                             <% } %>
 
                             <td align="center">
                               <a type="button" class="btn btn-icon btn-primary" href="/admin/doi/<%- team._id %>/view"><i class="fe fe-eye"></i></a>
-                               <% if(option == 'vong-1') { %>
-                                    <button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#ispaid" <%- disable %> data-disable="<%- team._id %>" onclick="selectedId('<%- team._id %>')"><i class="fe fe fe-credit-card"></i></button>
+                               <% if(option == 'trang-thai') { %>
+                                  <button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#ispaid" <%- disable %> data-disable="<%- team._id %>" onclick="selectedId('<%- team._id %>')"><i class="fe fe fe-credit-card"></i></button>
                                  
+                                <% } else { %>
+                                  <button type="button" class="btn btn-icon btn-warning" data-toggle="modal"  data-score='<%- team.submissions[0].score %>,<%- team.submissions[1].score %>' data-target="#updateScore" data-id='<%- team._id %>' onclick="updateSelectedId('<%- team._id %>')"><i class="fe fe-edit"></i></button>                                
                                 <% } %>
                             </td>
                           </tr>
@@ -102,6 +102,7 @@
 
     <% include ../partials/scripts %>
     <% include ./paid %>
+    <% include ./updateScore %>
     <!-- Data tables -->
     <script>
       var selectedId = "";
@@ -112,12 +113,20 @@
       $(function(e) {
         $("#example").DataTable();
       });
+      function updateSelectedId(id) {
+        let scores = $('button[data-id="'+ id +'"]')[0].getAttribute('data-score').split(',');
+        let inputScore = $('input[name="score"]');
+        inputScore[0].value = scores[0];
+        inputScore[1].value = scores[1];
+        $('form[action="linkToUpdateScore"]')[0].setAttribute('action', 'doi/'+ id +'/update-score')
+      }
+      
       function selectedId(id) {
         selectedId = id;
       }
          function paid() {
         $.ajax({
-          url: `/admin/doi/vong-1/${selectedId}/thanh-toan`,
+          url: `/admin/doi/trang-thai/${selectedId}/thanh-toan`,
           method: "POST",
           success: function(result) {
             $('button[data-disable="'+ selectedId + '"]')[0].disabled = true;
