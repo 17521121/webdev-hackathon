@@ -5,5 +5,6 @@ router.get('/', async (req, res, next) => {
 	return res.render('homepage')
 })
 
-require('./testContents')(router)
+require('./tests')(router)
+require('./register')(router)
 module.exports = router;
