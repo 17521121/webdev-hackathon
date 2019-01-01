@@ -1,7 +1,7 @@
 	/*  Wizard */
 	jQuery(function ($) {
 		"use strict";
-		$('form#wrapped').attr('action', 'smtp/registration_send.php');
+		$('form#wrapped').attr('action', 'smtp/dang-ki');
 		$("#wizard_container").wizard({
 			stepsWrapper: "#wrapped",
 			submit: ".submit",

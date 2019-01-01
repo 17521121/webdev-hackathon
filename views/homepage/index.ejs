@@ -9,44 +9,16 @@
 		<div data-loader="circle-side"></div>
 	</div><!-- /Preload -->
 
-	<header>
-		<div class="container-fluid">
-            <div class="row">
-                <div class="col-3">
-                    <a href="index.html"><img src="/homepage/img/logo.png" alt="" width="50" height="35" data-retina="true"></a>
-                </div>
-                <div class="col-9">
-                    <div id="social">
-                        <ul>
-                            <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#0"><i class="icon-google"></i></a></li>
-                            <li><a href="#0"><i class="icon-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- /social -->
-                    <nav>
-                        <ul class="cd-primary-nav">
-                            <li><a href="index.html" class="animated_link">Register Version</a></li>
-                            <li><a href="reservation_version.html" class="animated_link">Reservation Version</a></li>
-                            <li><a href="questionare_version.html" class="animated_link">Questionare Version</a></li>
-                            <li><a href="review_version.html" class="animated_link">Review Version</a></li>
-                            <li><a href="about.html" class="animated_link">About Us</a></li>
-                            <li><a href="contacts.html" class="animated_link">Contact Us</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-		</div>
-		<!-- container -->
-	</header>
+	<% include partials/navbar%>
+	
+
 	<!-- End Header -->
 	
 	<!-- SubHeader =============================================== -->
 	<section class="parallax_window_in" data-parallax="scroll" data-image-src="/homepage/img/sub_header_about.jpg" data-natural-width="1400" data-natural-height="470">
 		<div id="sub_content_in">
-			<h1>About Mavia</h1>
-			<p>"Usu habeo equidem sanctus no ex melius labitur conceptam eos"</p>
+			<h1>Giới thiệu cuộc thi lập trình WebHackathon</h1>
+			<p>"Sân chơi cho dân lập trình web"</p>
 		</div>
 	</section>
 	<!-- End section -->
@@ -72,8 +44,9 @@
 				<!-- End row -->
 			</div>
 		</div>
+		
 		<div class="container margin_60">
-			<h2 class="main_title"><em></em>Meet Mavia Team</h2>
+			<h2 class="main_title"><em></em>Bài viết mới nhất</h2>
 			<p class="lead styled">
 				Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie. Sed ad debet scaevola, ne mel lorem legendos.
 			</p>
@@ -196,16 +169,8 @@
 		<!-- End container -->
 	</main>
 	
-	<footer class="clearfix">
-		<div class="container">
-			<p>© 2018 Mavia</p>
-			<ul>
-				<li><a href="#0" class="animated_link">Purchase this template</a></li>
-				<li><a href="#0" class="animated_link">Terms and conditions</a></li>
-				<li><a href="#0" class="animated_link">Contacts</a></li>
-			</ul>
-		</div>
-	</footer>
+	<% include partials/footer%>
+
 	<!-- end footer-->
 
 	<div class="cd-overlay-nav">
@@ -218,7 +183,7 @@
 	</div>
 	<!-- cd-overlay-content -->
 
-	<a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+
 
 	<!-- SCRIPTS -->
 	<% include partials/script%>

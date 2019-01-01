@@ -13,6 +13,13 @@ router.get('/', async (req, res, next) => {
   return success(res, "Done", usersInfo)
 });
 
+router.get('/check-teams', async (req, res, next) => {
+  let teams = await mongoose.model('teams').find();
+     console.log(teams);
+  
+  return res.redirect('/admin/doi/vong-1');
+});
+
 router.get('/deleteHaha', async (req, res, next) => {
   let tems = await mongoose.model('teams').find();
     for(const tem of tems){
@@ -22,9 +29,18 @@ router.get('/deleteHaha', async (req, res, next) => {
   
   return res.redirect('/admin/doi/vong-1');
 });
-router.get('/insert-team', async (req, res, next) => {
+
+router.get('/delete', async (req, res, next) => {
+ 
+    await mongoose.model('teams').findOneAndDelete({ _id: '5c2a44508b2e5a083066d6d6'});
+    //await mongoose.model('teams').findOneAndDelete({ _id: '5c2a41353b767426cc9add6a'});
+  
+  return res.redirect('/admin/doi/vong-1');
+});
+
+router.get('/insert-team6', async (req, res, next) => {
   let insert = {
-    teamName: "team 3",
+    teamName: "team 6",
     leaderId: 'hahaha',
     member: [
     {phone: '0869', MSSV: '17520747', name: 'Minh', school: 'UIT'},
@@ -33,15 +49,9 @@ router.get('/insert-team', async (req, res, next) => {
     ],
     isPaid: true,
     submissions:[{
-      year: 2018,
-      semester: 1,
-      score: 7,
       path: ''
     },
     {
-        year: 2017,
-        semester: 2,
-        score: 10,
         path: ''
     }]
   }
@@ -49,9 +59,9 @@ router.get('/insert-team', async (req, res, next) => {
   return res.redirect('../admin/doi/vong-1');
 });
 
-router.get('/insert-team4', async (req, res, next) => {
+router.get('/insert-team5', async (req, res, next) => {
   let insert = {
-    teamName: "team 4",
+    teamName: "team 5",
     leaderId: 'team',
     member: [
     {phone: '0869', mssv: '17520747', name: 'Minh', school: 'UIT'},
@@ -62,12 +72,12 @@ router.get('/insert-team4', async (req, res, next) => {
     submissions:[{
       year: 2018,
       semester: 1,
-      path: ''
+      path: '',
+      score: 1
     },
     {
         year: 2017,
         semester: 2,
-        score: 10,
         path: ''
     }]
   }
