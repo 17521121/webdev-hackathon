@@ -1,6 +1,5 @@
 	/*  Wizard */
 	jQuery(function ($) {
-		$('form#wrapped').attr('action', 'review_send.php');
 		$("#wizard_container").wizard({
 			stepsWrapper: "#wrapped",
 			submit: ".submit",
