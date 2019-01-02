@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 module.exports = router => {
     //get dang ki
     router.get('/dang-ki', async (req, res, next) => {
-        return res.render('homepage/register');
+        let sponsors = await mongoose.model('sponsors').find();
+        return res.render('homepage/register', {sponsors});
     })
     //post dang ki
     router.post('/dang-ki', async (req, res, next) => {
