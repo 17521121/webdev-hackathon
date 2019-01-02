@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	
+<!-- Mirrored from www.spruko.com/demo/plight/html/Horizontal-Light-Headerfix/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Nov 2018 06:49:41 GMT -->
+<head>
+	<% include ./../partials/header %>
+	 <link
+      href="/assets/plugins/fileuploads/css/dropify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+</head>
+	<body class="" >
+		<div id="global-loader" ></div>
+		<div class="page">
+			<div class="page-main">
+				<% include ./../partials/headerBar %>
+				<% include ./../partials/navbar %>
+			</div>
+				<div class="my-3 my-md-5">
+					<div class="container">
+						<div class="page-header">
+							<h4 class="page-title">Thêm nhà tài trợ</h4>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<form  method="post" class="card" action="/admin/nha-tai-tro/them" enctype="multipart/form-data">
+									<div class="card-header">
+										<h3 class="card-title">Thông tin nhà tài trợ</h3>
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label class="form-label">Tên nhà tài trợ</label>
+													<input type="text" class="form-control" name="name" placeholder="Name">
+												</div>
+												<div class="form-group">
+													<label class="form-label">Link trang chủ nhà tài trợ</label>
+													<input class="form-control" name="link" placeholder="Link trang chủ nhà tài trợ">
+												</div>
+												<div class="form-group">
+													<label class="form-label">Tài trợ</label>
+													<input type="text" class="form-control" name="sponsored" placeholder="Tài trợ hiện kim hoặc hiện vật">
+												</div>
+											</div>
+												<div class="card">
+													<div class="card-header">
+														<h3 class="card-title">Logo nhà tài trợ</h3>
+													</div>
+													<div class=" card-body">
+														<div class="row">
+															<div class="col-lg-4 col-sm-12">
+																<input type="file" name="file" class="dropify" data-height="180" />
+															</div>
+														</div>
+													</div>
+												</div>
+											
+									<div class="card-footer text-right">
+										<div class="d-flex">
+											<a href="/admin/nha-tai-tro" class="btn btn-link">Thoát</a>
+											<button type="submit" class="btn btn-primary ml-auto">Lưu</button>
+										</div>
+									</div>
+								</form>
+								
+
+								
+			</div>
+
+			<!--footer-->
+			<% include ./../partials/footer %>
+			<!-- End Footer-->
+		</div>
+
+		<!-- Back to top -->
+		<a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+		<!-- Dashboard Css -->
+		<% include ./../partials/scripts %>
+    	<script src="/assets/plugins/fileuploads/js/dropify.js"></script>
+
+		<script >
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong appended.'
+                },
+                error: {
+                    'fileSize': 'The file size is too big (2M max).'
+                }
+            });
+        </script>
+
+	</body>
+
+<!-- Mirrored from www.spruko.com/demo/plight/html/Horizontal-Light-Headerfix/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Nov 2018 06:49:45 GMT -->
+</html>
+
+

@@ -20,12 +20,15 @@ router.get('/check-teams', async (req, res, next) => {
   return res.redirect('/admin/doi/vong-1');
 });
 
-router.get('/deleteHaha', async (req, res, next) => {
+router.get('/deleteData', async (req, res, next) => {
   let tems = await mongoose.model('teams').find();
     for(const tem of tems){
       await mongoose.model('teams').findOneAndDelete({ _id: tem._id});
     }
-     //mongoose.model('teams').findOneAndDelete({ _id: tem._id});
+  let sponsors = await mongoose.model('sponsors').find();
+  for(const tem of sponsors){
+    await mongoose.model('sponsors').findOneAndDelete({ _id: tem._id});
+  }
   
   return res.redirect('/admin/doi/vong-1');
 });

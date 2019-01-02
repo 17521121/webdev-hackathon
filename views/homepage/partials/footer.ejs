@@ -10,13 +10,9 @@
   <div class="container">
     <!--Logo các nhà tài trợ-->
     <h3>Các nhà tài trợ</h3>
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-    <img src="homepage/img/favicon.ico" style="width: 30px; height: 30px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+    <% sponsors.map(item => { %>
+      <a href='<%- item.link %>' tagget='_blank'><img src="<%- item.linkLogo %>" style="width: 50px; height: 50px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="<%- item.name %>">
+    <% }) %>
     
   </div>
 </footer>
