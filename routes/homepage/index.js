@@ -8,4 +8,5 @@ router.get('/', async (req, res, next) => {
 
 require('./tests')(router)
 require('./register')(router)
+require('./login')(router)
 module.exports = router;

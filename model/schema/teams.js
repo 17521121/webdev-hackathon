@@ -5,6 +5,10 @@ var teams = new mongoose.Schema({
     type: String,
     require: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   leaderId: { //mssv
     type: String,
     require: true
