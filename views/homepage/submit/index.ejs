@@ -14,20 +14,76 @@
 
 
   <!-- End Header -->
-  <div class="container" style="margin-top: 2 0px ">
+  <div class="container" style="margin-top: 20px ">
     <div class="row">
-      <div class="col-6 container">
+      <div class="container">
         <h3>Submit project( file/ zip/ rar)</h3>
         <form action="/submit/vong1" id="upload_form" enctype="multipart/form-data" method="post">
           <input type="file" name="file1" id="file1"><br><br>
           <input type="submit" value="Submit">
         </form>
       </div>
-      <div class="col-6 container countdown">
-        <ul class="color_white list-inline list-unstyled" id="countdown"></ul>
-      </div>
+
     </div>
   </div>
+
+  <div class="countdown countdown-container container">
+    <div class="clock row">
+      <!-- /.clock-item -->
+      <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+        <div class="wrap">
+          <div class="inner">
+            <div id="canvas-days" class="clock-canvas"></div>
+            <div class="text">
+              <p class="val" id='daysCount'>0</p>
+              <p class="type-days type-time">DAYS</p>
+            </div><!-- /.text -->
+          </div><!-- /.inner -->
+        </div><!-- /.wrap -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+        <div class="wrap">
+          <div class="inner">
+            <div id="canvas-hours" class="clock-canvas"></div>
+
+            <div class="text">
+              <p class="val" id='hoursCount'>0</p>
+              <p class="type-hours type-time">HOURS</p>
+            </div><!-- /.text -->
+          </div><!-- /.inner -->
+        </div><!-- /.wrap -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+        <div class="wrap">
+          <div class="inner">
+            <div id="canvas-minutes" class="clock-canvas"></div>
+
+            <div class="text">
+              <p class="val" id='minsCount'>0</p>
+              <p class="type-minutes type-time">MINUTES</p>
+            </div><!-- /.text -->
+          </div><!-- /.inner -->
+        </div><!-- /.wrap -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+        <div class="wrap">
+          <div class="inner">
+            <div id="canvas-seconds" class="clock-canvas"></div>
+
+            <div class="text">
+              <p class="val" id='secondsCount'>0</p>
+              <p class="type-seconds type-time">SECONDS</p>
+            </div><!-- /.text -->
+          </div><!-- /.inner -->
+        </div><!-- /.wrap -->
+      </div><!-- /.clock-item -->
+
+    </div><!-- /.clock -->
+  </div><!-- /.countdown-wrapper -->
+
 
   <!-- end footer-->
   <% include ../partials/footer%>
@@ -44,16 +100,21 @@
 
   <!-- SCRIPTS -->
   <% include ../partials/script%>
-  <script>
-    var ctd = document.getElementById('countdown');
+
+  <script type="text/javascript">
+
+    var daysCount = document.getElementById('daysCount');
+    var hoursCount = document.getElementById('hoursCount');
+    var minsCount = document.getElementById('minsCount');
+    var secondsCount = document.getElementById('secondsCount');
 
     countdown();
 
     function countdown() {
       // ATTENTION - Ianuary is 0, February is 1 ......
       // year 2019 , month  0-11 ,day  1-31 , hour 0-23, minute 0-59, sec 0-59, millisec 0-999
-      var launch_date = new Date(Date.UTC(2019, 1, 15, 12 -7, 0));
-                                        // year,m, d ,hour -7, min
+      var launch_date = new Date(Date.UTC(2019, 1, 15, 12 - 7, 0));
+      // year,m, d ,hour -7, min
       var days;
       var hours;
       var minutes;
@@ -78,18 +139,17 @@
 
       rest <= 0 ? days = hours = minutes = seconds = '00' : setTimeout(countdown, 1000);
 
-      ctd.innerHTML =
-        '<li><div><span class="data_countdown">' + days + '</span> <span class = "label_countcount"> DAY' + (days > 1 ? 'S' : '') + '</span></div></li>' +
-        '<li><div><span class="data_countdown">' + hours + '</span> <span class = "label_countcount"> HOUR' + (hours > 1 ? 'S' : '') + '</span></div></li>' +
-        '<li><div><span class="data_countdown">' + minutes + '</span> <span class = "label_countcount"> MINUTE' + (minutes > 1 ? 'S' : '') + '</span></div></li>' +
-        '<li><div><span class="data_countdown">' + seconds + '</span> <span class = "label_countcount"> SECOND' + (seconds > 1 ? 'S' : '') + '</span></div></li>';
+      daysCount.innerHTML = days;
+      hoursCount.innerHTML = hours;
+      minsCount.innerHTML = minutes;
+      secondsCount.innerHTML = seconds;
     }
 
     function _(el) {
       return document.getElementById(el);
     }
 
-   
+
   </script>
 </body>
 
