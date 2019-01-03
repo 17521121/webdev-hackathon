@@ -48,7 +48,6 @@ module.exports = router => {
   router.get('/bai-viet/:id/edit', checkPermission(IS_USER), async (req, res, next) => {
     try {
       let posts = await mongoose.model('posts').findById(req.params.id).populate('userId');
-      console.log(posts)
       return res.render('adminpage/posts/edit', { posts })
     } catch (err) {
       console.log(err)
