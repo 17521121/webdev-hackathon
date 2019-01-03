@@ -9,6 +9,10 @@ var sponsors = new mongoose.Schema({
     type: String,
     require: true
   },
+  contactInfo: {
+    type: String,
+    require: true
+  },
   sponsored: {
     type: String,
     require: true
