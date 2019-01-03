@@ -13,6 +13,8 @@ router.get('/', checkPermission(IS_USER),async (req, res, next) => {
   let teams = await mongoose.model("teams").find();
   let countJoined = 0;
 
+  //count post
+  let countPosts = await mongoose.model("posts").count();
   for (const team of teams) {
     for(const submission of team.submissions) {
       if(submission.score > 0) {
@@ -21,7 +23,7 @@ router.get('/', checkPermission(IS_USER),async (req, res, next) => {
       }
     }
   }
-  return res.render('adminpage', { countUsers, countRegister,countJoined } );
+  return res.render('adminpage', { countUsers, countRegister,countJoined, countPosts } );
 })
 
 require('./teams')(router);

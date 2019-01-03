@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/header%>
+
+<body>
+
+  <% include ../partials/navbar%>
+
+
+  <div id="preloader">
+    <div data-loader="circle-side"></div>
+  </div><!-- /Preload -->
+
+
+  <!-- End Header -->
+  <div class="container" style="margin-top: 2 0px ">
+    <div class="row">
+      <div class="col-6 container">
+        <h3>Submit project( file/ zip/ rar)</h3>
+        <form action="/public/vong1" id="upload_form" enctype="multipart/form-data" method="post">
+          <input type="file" name="file1" id="file1" onchange="uploadFile()"><br><br>
+          <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+          <h3 id="status"></h3>
+          <p id="loaded_n_total"></p>
+        </form>
+      </div>
+      <div class="col-6 container countdown">
+        <ul class="color_white list-inline list-unstyled" id="countdown"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- end footer-->
+  <% include ../partials/footer%>
+
+  <div class="cd-overlay-nav">
+    <span></span>
+  </div>
+  <!-- cd-overlay-nav -->
+
+  <div class="cd-overlay-content">
+    <span></span>
+  </div>
+  <!-- cd-overlay-content -->
+
+  <!-- SCRIPTS -->
+  <% include ../partials/script%>
+  <script>
+    var ctd = document.getElementById('countdown');
+
+    countdown();
+
+    function countdown() {
+      // ATTENTION - Ianuary is 0, February is 1 ......
+      // year 2019 , month  0-11 ,day  1-31 , hour 0-23, minute 0-59, sec 0-59, millisec 0-999
+      var launch_date = new Date(Date.UTC(2019, 1, 15, 12 -7, 0));
+                                        // year,m, d ,hour -7, min
+      var days;
+      var hours;
+      var minutes;
+      var seconds;
+      var rest;
+      var now = new Date();
+      seconds = rest = Math.floor(((launch_date.getTime() - now.getTime()) / 1000));
+      days = zero(Math.floor(seconds / 86400));
+      seconds -= days * 86400;
+
+      hours = zero(Math.floor(seconds / 3600));
+      seconds -= hours * 3600;
+
+      minutes = zero(Math.floor(seconds / 60));
+      seconds -= minutes * 60;
+
+      seconds = zero(Math.floor(seconds));
+
+      function zero(n) {
+        return (n < 10 ? '0' : false) + n;
+      }
+
+      rest <= 0 ? days = hours = minutes = seconds = '00' : setTimeout(countdown, 1000);
+
+      ctd.innerHTML =
+        '<li><div><span class="data_countdown">' + days + '</span> <span class = "label_countcount"> DAY' + (days > 1 ? 'S' : '') + '</span></div></li>' +
+        '<li><div><span class="data_countdown">' + hours + '</span> <span class = "label_countcount"> HOUR' + (hours > 1 ? 'S' : '') + '</span></div></li>' +
+        '<li><div><span class="data_countdown">' + minutes + '</span> <span class = "label_countcount"> MINUTE' + (minutes > 1 ? 'S' : '') + '</span></div></li>' +
+        '<li><div><span class="data_countdown">' + seconds + '</span> <span class = "label_countcount"> SECOND' + (seconds > 1 ? 'S' : '') + '</span></div></li>';
+    }
+
+    function _(el) {
+      return document.getElementById(el);
+    }
+
+    function uploadFile() {
+      var file = _("file1").files[0];
+      // alert(file.name+" | "+file.size+" | "+file.type);
+      var formdata = new FormData();
+      formdata.append("file1", file);
+      var ajax = new XMLHttpRequest();
+      ajax.upload.addEventListener("progress", progressHandler, false);
+      ajax.addEventListener("load", completeHandler, false);
+      ajax.addEventListener("error", errorHandler, false);
+      ajax.addEventListener("abort", abortHandler, false);
+      ajax.open("POST", "submit/vong1"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+      //use file_upload_parser.php from above url
+      ajax.send(formdata);
+    }
+
+    function progressHandler(event) {
+      _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+      var percent = (event.loaded / event.total) * 100;
+      _("progressBar").value = Math.round(percent);
+      _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+    }
+
+    function completeHandler(event) {
+      _("status").innerHTML = event.target.responseText;
+      _("progressBar").value = 0; //wil clear progress bar after successful upload
+    }
+
+    function errorHandler(event) {
+      _("status").innerHTML = "Upload Failed";
+    }
+
+    function abortHandler(event) {
+      _("status").innerHTML = "Upload Aborted";
+    }
+  </script>
+</body>
+
+</html>
