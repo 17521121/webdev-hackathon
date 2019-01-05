@@ -1,7 +1,7 @@
  
 
 html {
-	background-image: url('/homepage/img/countdown/logo.png');
+	background-image: url('/homepage/images/countdown/logo.png');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;	
@@ -9,7 +9,7 @@ html {
 
 body {
 	background-color: rgba(44,62,80 , 0.6 );
-	background-image: url('/homepage/img/countdown/pattern.png');
+	background-image: url('/homepage/images/countdown/pattern.png');
 	background-position: center;
 	background-repeat: repeat;
 	font-family: 'Raleway', 'Arial', sans-serif;
