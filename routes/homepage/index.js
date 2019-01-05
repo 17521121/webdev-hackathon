@@ -6,7 +6,6 @@ router.get('/', async (req, res, next) => {
 	return res.render('homepage', {sponsors});
 })
 
-require('./tests')(router)
 require('./register')(router)
 require('./login')(router)
 require('./submit')(router)

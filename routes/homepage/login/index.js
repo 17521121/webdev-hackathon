@@ -18,6 +18,7 @@ module.exports = router => {
         } else {
           req.session.cookie.expires = false; // Cookie expires at end of session
         }
+        return res.redirect("/");
       }
       return res.redirect("/dang-nhap")
     })
