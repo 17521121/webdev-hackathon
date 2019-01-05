@@ -1,0 +1,2 @@
+(function($){"use strict";$(window).on('load',function(){$('[data-loader="circle-side"]').fadeOut();$('#preloader').delay(350).fadeOut('slow');$('body').delay(350).css({'overflow':'visible'})})
+$('.tooltip-1').tooltip({html:!0});$('input.icheck').iCheck({checkboxClass:'icheckbox_square-grey',radioClass:'iradio_square-grey'});$(".team-carousel").owlCarousel({items:1,loop:!1,margin:10,autoplay:!1,smartSpeed:300,responsiveClass:!1,responsive:{320:{items:1,},768:{items:2,},1000:{items:3,}}})})(window.jQuery)
