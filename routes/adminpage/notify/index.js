@@ -15,10 +15,10 @@ var io = socket.listen(server);
 module.exports = router => {
 
   router.get('/thong-bao/tat-ca', (req, res, next) => {
-    return res.render('adminpage/notify/toAll');
+    return res.render('/adminpage/notify/toAll');
   })
   router.get('/thong-bao/doi', (req, res, next) => {
-    return res.render('adminpage/notify/specifyTeams');
+    return res.render('/adminpage/notify/specifyTeams');
   })
 
   //Post notify by gmail and notification homepage to all
@@ -34,16 +34,16 @@ module.exports = router => {
     //send email
     Send(sendTo, req.body.subject, req.body.content);
     //Thông báo cho người dùng
-    io.on('connection', function (socket) {
-      socket.on('msg', function (data) {
-        //to all member
-        io.sockets.emit('msg', {
-          msg: data.msg
-        });
-      });
-    });
+    // io.on('connection', function (socket) {
+    //   socket.on('msg', function (data) {
+    //     //to all member
+    //     io.sockets.emit('msg', {
+    //       msg: data.msg
+    //     });
+    //   });
+    // });
 
-    return res.render('adminpage');
+    return res.redirect('/admin');
   })
 
   //Thông báo cho các đội (mssv leader) được chỉ định
@@ -63,15 +63,15 @@ module.exports = router => {
     }
 
     //Thông báo cho người dùng
-    io.on('connection', function (socket) {
-      socket.on('msg', function (data) {
-        io.sockets.in(teamId).emit('msg', {
-          msg: data.msg
-        });
-      });
-    });
+    // io.on('connection', function (socket) {
+    //   socket.on('msg', function (data) {
+    //     io.sockets.in(teamId).emit('msg', {
+    //       msg: data.msg
+    //     });
+    //   });
+    // });
 
-    return res.render('adminpage');
+    return res.redirect("/admin");
   })
 
 
