@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<% include ../partials/header%>
+<% include ../partials/head %>
 
 <body>
 
-  <% include ../partials/navbar%>
+  <% include ../partials/navbar %>
 
 
   <div id="preloader">
@@ -99,7 +99,7 @@
   <!-- cd-overlay-content -->
 
   <!-- SCRIPTS -->
-  <% include ../partials/script%>
+  <% include ../partials/scripts %>
 
   <script type="text/javascript">
 
@@ -149,7 +149,11 @@
       return document.getElementById(el);
     }
 
+    var linkElement = document.createElement("link");
+    linkElement.rel = "stylesheet";
+    linkElement.href = "/homepage/css/count-down.css"; //Replace here
 
+    document.head.appendChild(linkElement);
   </script>
 </body>
 
