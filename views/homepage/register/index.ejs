@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 </style>
-<% include ../partials/header%>
+<% include ../partials/head %>
 
 <body>
-	
+
 	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div><!-- /Preload -->
-	
+
 	<div id="loader_form">
 		<div data-loader="circle-side-2"></div>
 	</div><!-- /loader_form -->
 
-	<% include ../partials/navbar%>
+	<% include ../partials/navbar %>
 	<!-- End Header -->
 
 	<main>
@@ -27,7 +27,7 @@ input[type=number]::-webkit-outer-spin-button {
 			<div class="row">
 				<div class="col-lg-5">
 					<div id="left_form">
-						<figure><img src="/homepage/img/registration_bg.svg" alt=""></figure>
+						<figure><img src="/homepage/images/registration_bg.svg" alt=""></figure>
 						<h2>Đăng kí đội thi đấu</h2>
 						<p>thông tin gì đó về cuộc thi lập trình web</p>
 						<a href="#0" id="more_info" data-toggle="modal" data-target="#more-info"><i class="pe-7s-info"></i></a>
@@ -73,10 +73,10 @@ input[type=number]::-webkit-outer-spin-button {
 			</div><!-- /Row -->
 		</div><!-- /Form_container -->
 	</main>
-	
+
 
 	<!-- end footer-->
-	<% include ../partials/footer%>
+	<% include ../partials/footer %>
 
 	<div class="cd-overlay-nav">
 		<span></span>
@@ -89,7 +89,15 @@ input[type=number]::-webkit-outer-spin-button {
 	<!-- cd-overlay-content -->
 
 	<!-- SCRIPTS -->
-	<% include ../partials/script%>
+	<% include ../partials/scripts %>
+
+	<style type="text/css">
+		@import url("/homepage/css/icon_fonts/css/all_icons_min.css");
+		@import url("/homepage/css/skins/square/grey.css");
+		@import url("/homepage/css/menu.css");
+		@import url("/homepage/css/animate.min.css");
+	</style>
 	<script src='/homepage/js/memberForm.js'></script>
 </body>
+
 </html>
