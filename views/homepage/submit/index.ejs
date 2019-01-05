@@ -2,7 +2,6 @@
 <html lang="en">
 
 <% include ../partials/head %>
-
 <body>
 
   <% include ../partials/navbar %>
@@ -14,6 +13,55 @@
 
 
   <!-- End Header -->
+
+  <div class="container">
+    <label for="" class="align-self-center">Thời gian còn lại</label>
+  </div>
+
+  <div class="countdown countdown-container container">
+    <div class="clock row">
+      <!-- /.clock-item -->
+      <div class="clock-item align-self-center countdown-time-value col-3">
+        <div class="inner">
+          <div class="text">
+            <p class="val" id='daysCount'>0</p>
+            <p class="type-days type-time">DAYS</p>
+          </div><!-- /.text -->
+        </div><!-- /.inner -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item countdown-time-value col-3">
+        <div class="inner ">
+          <div class="text">
+            <p class="val" id='hoursCount'>0</p>
+            <p class="type-hours type-time">HOURS</p>
+          </div><!-- /.text -->
+        </div><!-- /.inner -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item countdown-time-value col-3">
+        <div class="inner ">
+          <div class="text">
+            <p class="val" id='minsCount'>0</p>
+            <p class="type-minutes type-time">MINUTES</p>
+          </div><!-- /.text -->
+        </div><!-- /.inner -->
+      </div><!-- /.clock-item -->
+
+      <div class="clock-item countdown-time-value col-3">
+        <div class="inner ">
+          <div class="text">
+            <p class="val" id='secondsCount'>0</p>
+            <p class="type-seconds type-time">SECONDS</p>
+          </div><!-- /.text -->
+        </div><!-- /.inner -->
+      </div><!-- /.clock-item -->
+
+    </div><!-- /.clock -->
+  </div><!-- /.countdown-wrapper -->
+
+  <hr>
+
   <div class="container">
     <div class="row">
       <div class="">
@@ -26,53 +74,8 @@
 
     </div>
   </div>
-
-  <div class="countdown countdown-container container">
-    <div class="clock row">
-      <!-- /.clock-item -->
-      <div class="clock-item align-self-center countdown-time-value col-3">
-        <div class="inner align-items-center">
-          <div class="text">
-            <p class="val" id='daysCount'>0</p>
-            <p class="type-days type-time">DAYS</p>
-          </div><!-- /.text -->
-        </div><!-- /.inner -->
-      </div><!-- /.clock-item -->
-
-      <div class="clock-item countdown-time-value col-3">
-        <div class="inner align-items-center">
-          <div class="text">
-            <p class="val" id='hoursCount'>0</p>
-            <p class="type-hours type-time">HOURS</p>
-          </div><!-- /.text -->
-        </div><!-- /.inner -->
-      </div><!-- /.clock-item -->
-
-      <div class="clock-item countdown-time-value col-3">
-        <div class="inner align-items-center">
-          <div class="text">
-            <p class="val" id='minsCount'>0</p>
-            <p class="type-minutes type-time">MINUTES</p>
-          </div><!-- /.text -->
-        </div><!-- /.inner -->
-      </div><!-- /.clock-item -->
-
-      <div class="clock-item countdown-time-value col-3">
-        <div class="inner align-items-center">
-          <div class="text">
-            <p class="val" id='secondsCount'>0</p>
-            <p class="type-seconds type-time">SECONDS</p>
-          </div><!-- /.text -->
-        </div><!-- /.inner -->
-      </div><!-- /.clock-item -->
-
-    </div><!-- /.clock -->
-  </div><!-- /.countdown-wrapper -->
-
-
-
   <!-- end footer-->
-  <% include ../partials/footer%>
+  <% include ../partials/footer %>
 
   <div class="cd-overlay-nav">
     <span></span>
