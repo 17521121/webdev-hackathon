@@ -11,9 +11,6 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;	
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
 }
 .clock-item .inner {
 	height: 0px;
@@ -28,7 +25,9 @@
 	vertical-align: middle;
 }
 .text {
-	
+	position: absolute;
+	margin-top: -4vh;
+	top: 50%;
 	color: #fff;	
 	font-weight: bold;	
 	text-align: center;
@@ -37,11 +36,18 @@
 }
 
 .text .val {
-	font-size: 3em;
+	font-size: calc(100% + 1.5vw + 1.5vh);
 }
 
 .text .type-time {
-	font-size: 1.5em;
+	font-size: calc(50% + 0.5vh + 0.5vw);
 }
-
+label {
+	padding: 2vw+2vh;
+	font-size: calc(100% + 2vw + 2vh);
+	background: none !important;
+	text-align: center;
+	width: 100%;
+	color: #89bdf8
+}
  
