@@ -71,77 +71,33 @@ module.exports = router => {
     return res.render('adminpage/notify/specifyTeams');
   })
 
-  //Post notify by gmail and notification homepage to all
-  router.post('/thong-bao-all', upload.array("file1",5), (req, res, next) => {
-    // let sendTo = "";
-    // let teams = await mongoose.model("teams").find({}); 
-    // teams.forEach(team => {
-    //   sendTo += team.emailLeader + ", ";
-    // })
+  //Post notify by gmail  
+  router.post('/thong-bao-all', checkPermission(IS_USER) ,upload.array("file1",5), (req, res, next) => {
+    let sendTo = "";
+    mongoose.model("teams").find({}, (err, teams) => {
+      teams.forEach(team => {
+        sendTo += team.emailLeader + ", ";
+      })
+    }); 
     let attachments = [];
     req.files.map( file => {
       attachments.push({filename: file.filename, path: 'thongbao/' + file.filename})
     });
     
-    sendMail('"Tiến kt 👻" <dangquoctienvktl@gmail.com>', "17521121@gm.uit.edu.vn", req.body.subject, req.body.content, attachments);
+    sendMail('"Web Hackathon" <webhackathon@gmail.com>', sendTo , req.body.subject, req.body.content, attachments);
     return res.redirect('/admin/thong-bao-all');
   })
 
-  //Thông báo cho các đội (mssv leader) được chỉ định
-  // router.post('/thong-bao/doi', checkPermission(IS_USER), (req, res, next) => {
-
-  //   //send email
-  //   Send(req.body.sendTo, req.body.subject, req.body.content);
-
-  //   //get teamId of teams
-  //   let teamId = [];
-
-  //   let mailLeader = req.body.leaderId.split(",;");
-  //   for(const i of mailLeader) {
-  //     let mssv = i.trim().split("@");
-  //     let team = mongoose.model("teams").findOne({leaderId: mssv[0]});
-  //     teamId.push(team._id);
-  //   }
-
-  //   //Thông báo cho người dùng
-  //   // io.on('connection', function (socket) {
-  //   //   socket.on('msg', function (data) {
-  //   //     io.sockets.in(teamId).emit('msg', {
-  //   //       msg: data.msg
-  //   //     });
-  //   //   });
-  //   // });
-
-  //   return res.redirect("/admin");
-  // })
-
-
+  //Thông báo cho các đội (email leader) được chỉ định
+  router.post('/thong-bao-specify', checkPermission(IS_USER) ,upload.array("file1",5), (req, res, next) => {
+    let attachments = [];
+    req.files.map( file => {
+      attachments.push({filename: file.filename, path: 'thongbao/' + file.filename})
+    });
+    
+    sendMail('"Web Hackathon" <webhackathon@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
+    return res.redirect('/admin/thong-bao-specify');
+  })
 }
-/* NOTES */
-/* scripts paste to client to get notify
-
-     $.ajax({
-           type: "POST",
-           url: "(some_url)",
-           data: $("id_form").serialize(),
-           dataType: "json",
-           beforeSend:function(){
-               alert('bla..bla..');
-           },
-           success: function (result) {
-               if (result.status) {
-                   var socket = io.connect('http://' + window.location.hostname + ':3000');
-                   socket.emit('new_count_message', {
-                       new_count_message: result.new_count_message
-                   });
-               } else if (result.status == false) {
-                   alert(error);
-                   return false;
-               }
-           },
-           error: function(xhr, Status, error) {
-               alert(error);
-           }
-       });
-
-   */
+ 
+ 
