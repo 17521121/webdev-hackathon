@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
-  }   
+  }
 })
 
 var upload = multer({ storage: storage });
@@ -72,32 +72,36 @@ module.exports = router => {
   })
 
   //Post notify by gmail  
-  router.post('/thong-bao-all', checkPermission(IS_USER) ,upload.array("file1",5), (req, res, next) => {
-    let sendTo = "";
-    mongoose.model("teams").find({}, (err, teams) => {
-      teams.forEach(team => {
+  router.post('/thong-bao-all', checkPermission(IS_USER), upload.array("file1", 5), async (req, res, next) => {
+    let sendTo = '';
+    let teams = await mongoose.model("teams").find({});
+    let listsend = await teams.forEach(team => {
+      if (team.emailLeader) {
         sendTo += team.emailLeader + ", ";
-      })
-    }); 
+      }
+    })
     let attachments = [];
-    req.files.map( file => {
-      attachments.push({filename: file.filename, path: 'thongbao/' + file.filename})
+    await req.files.map(file => {
+      attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
-    
-    sendMail('"Web Hackathon" <webhackathon@gmail.com>', sendTo , req.body.subject, req.body.content, attachments);
+    if (attachments.length)
+      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>',  sendTo , req.body.subject, req.body.content, attachments);
+    else
+      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>',  sendTo , req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-all');
   })
 
   //Thông báo cho các đội (email leader) được chỉ định
-  router.post('/thong-bao-specify', checkPermission(IS_USER) ,upload.array("file1",5), (req, res, next) => {
+  router.post('/thong-bao-specify', checkPermission(IS_USER), upload.array("file1", 5), async (req, res, next) => {
     let attachments = [];
-    req.files.map( file => {
-      attachments.push({filename: file.filename, path: 'thongbao/' + file.filename})
+    await req.files.map(file => {
+      attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
-    
-    sendMail('"Web Hackathon" <webhackathon@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
+    if (attachments.length)
+      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
+    else
+      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>', req.body.sendTo , req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-specify');
   })
 }
- 
- 
+
