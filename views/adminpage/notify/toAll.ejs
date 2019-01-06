@@ -1,142 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <% include ../partials/header %>
-    <link
-      href="/assets/plugins/datatable/dataTables.bootstrap4.min.css"
-      rel="stylesheet"
-    />
-    <link href="/assets/css/summernote.css" rel="stylesheet" />
-    <link
-      href="/assets/plugins/fileuploads/css/dropify.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-  </head>
-  <body class="">
-    <div id="global-loader"></div>
-    <div class="page">
-      <div class="page-main">
-        <% include ../partials/headerBar %> <% include ../partials/navbar %>
 
-        <div class="my-3 my-md-5">
-          <div class="container">
-            <div class="page-header">
-              <h4 class="page-title">Thông báo đến mọi người</h4>
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Data Tables
-                </li>
-              </ol>
-            </div>
+<head>
+  <% include ../partials/header %>
+  <link href="/assets/plugins/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+  <link href="/assets/css/summernote.css" rel="stylesheet" />
+  <link href="/assets/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
+</head>
 
-            <div class="row">
-              <div class="col-12">
-                <form method="post" class="card" action="/admin/thong-bao/tat-ca" enctype="multipart/form-data">
-                  <div class="card-header">
-                    <h3 class="card-title">Viết thông báo mới</h3>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-12 col-lg-12">
-                        <div class="form-group">
-                          <label class="form-label">Tiêu đề</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            name="subject"
-                            placeholder="Tiêu đề"
-                          />
-                        </div>
-                        
-                        <div class="form-group">
-                          <label class="form-label">Nội dung bài viết</label>
-                          <input id="summernote" name="content" />
-                        </div>
+<body class="">
+  <div id="global-loader"></div>
+  <div class="page">
+    <div class="page-main">
+      <% include ../partials/headerBar %>
+      <% include ../partials/navbar %>
+
+      <div class="my-3 my-md-5">
+        <div class="container">
+          <div class="page-header">
+            <h4 class="page-title">Thông báo đến mọi người</h4>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Data Tables
+              </li>
+            </ol>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <form method="POST" class="card" action="/admin/thong-bao-all" enctype="multipart/form-data">
+                <div class="card-header">
+                  <h3 class="card-title">Viết thông báo mới</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="form-group">
+                        <label class="form-label">Tiêu đề</label>
+                        <input type="text" class="form-control" name="subject" placeholder="Tiêu đề" />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-label">Nội dung bài viết</label>
+                        <input id="summernote" name="content" />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-label">File đính kèm</label>
+                        <input type="file" name="file1" id="file1" multiple>
                       </div>
                     </div>
                   </div>
-                 
-                  <div class="card-footer text-right">
-                    <div class="d-flex">
-                      <a href="" class="btn btn-link"
-                        >Cancel</a
-                      >
-                      <button type="submit" class="btn btn-primary ml-auto">
-                       Gửi thông báo
-                      </button>
-                    </div>
+                </div>
+
+                <div class="card-footer text-right">
+                  <div class="d-flex">
+                    <a href="" class="btn btn-link">Cancel</a>
+                    <input type="submit" class="btn btn-primary ml-auto">
+                    Gửi thông báo
+                    </input>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-
-      <% include ../partials/footer %>
     </div>
 
-    <!-- Back to top -->
-    <a href="#top" id="back-to-top" style="display: inline;"
-      ><i class="fa fa-angle-up"></i
-    ></a>
+    <% include ../partials/footer %>
+  </div>
 
-    <% include ../partials/scripts %>
-    <!-- Data tables -->
-    <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
-    <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
-    <script src="/assets/summernote.js"></script>
-    <script src="/assets/plugins/fileuploads/js/dropify.js"></script>
-    <script>
-      function saveFile(file, editor, welEditable) {
-        $.map(file, function(item, index) {
-          let data = new FormData();
-          data.append("image", item);
-          $.ajax({
-            data: data,
-            type: "POST",
-            url: "/api/upload/image",
-            contentType: false,
-            processData: false,
-            success: function(url) {
-              $("#summernote").summernote("insertImage", url.link);
-            }
-          });
-        });
-      }
-      $(function(e) {
-        $("#example").DataTable();
-      });
-      $("#summernote").summernote({
-        tabsize: 2,
-        minHeight: 200,
-        maxHeight: 450,
-        focus: true,
-        callbacks: {
-          onImageUpload: function(file, editor, welEditable) {
-            saveFile(file, editor, welEditable);
-          },
-          onChange: function (contents, $editable) {
-            $(this).val(contents);
-          }
-        }
-      });
-      $('#summernote').val($('#summernote').code());
-    </script>
-    <script>
-      $(".dropify").dropify({
-        messages: {
-          default: "Drag and drop a file here or click",
-          replace: "Drag and drop or click to replace",
-          remove: "Remove",
-          error: "Ooops, something wrong appended."
+  <!-- Back to top -->
+  <a href="#top" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+
+  <% include ../partials/scripts %>
+  <!-- Data tables -->
+  <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+  <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+  <script src="/assets/summernote.js"></script>
+  <script src="/assets/plugins/fileuploads/js/dropify.js"></script>
+  <script>
+    
+      
+    $(function (e) {
+      $("#example").DataTable();
+    });
+    $("#summernote").summernote({
+      tabsize: 2,
+      minHeight: 200,
+      maxHeight: 450,
+      focus: true,
+      callbacks: {
+        onImageUpload: function (file, editor, welEditable) {
+          saveFile(file, editor, welEditable);
         },
-        error: {
-          fileSize: "The file size is too big (2M max)."
+        onChange: function (contents, $editable) {
+          $(this).val(contents);
         }
-      });
-    </script>
-  </body>
+      }
+    });
+    $('#summernote').val($('#summernote').code());
+  </script>
+  <script>
+    $(".dropify").dropify({
+      messages: {
+        default: "Drag and drop a file here or click",
+        replace: "Drag and drop or click to replace",
+        remove: "Remove",
+        error: "Ooops, something wrong appended."
+      },
+      error: {
+        fileSize: "The file size is too big (2M max)."
+      }
+    });
+  </script>
+</body>
+
 </html>
