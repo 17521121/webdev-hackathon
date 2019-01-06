@@ -46,7 +46,7 @@
                         <% teams.map(team => { let disable = 'disabled'; %>
                           <tr>
                             <td><%- team.teamName %></td>
-                            <td><%- team.leaderId %></td>
+                            <td><%- team.emailLeader %></td>
                             <td><%- team.member[0].phone %></td>
                             <% if(option == 'trang-thai') { %>
                                 <% if(team.isPaid == true) { %>

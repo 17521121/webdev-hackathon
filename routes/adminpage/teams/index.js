@@ -8,7 +8,7 @@ module.exports = router => {
     router.get('/doi', checkPermission(IS_USER), async (req, res, next) => {
         let teams = await mongoose.model('teams').find();
         let option = ''; 
-        console.log(teams);
+        console.log(teams[1]);
         return res.render('adminpage/teams', {teams, option});
     })
     //post thanh toan 

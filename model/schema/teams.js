@@ -9,7 +9,7 @@ var teams = new mongoose.Schema({
     type: String,
     required: true
   },
-  leaderId: { //mssv
+  emailLeader: { 
     type: String,
     require: true
   },

@@ -40,6 +40,14 @@ router.get('/delete', async (req, res, next) => {
   
   return res.redirect('/admin/doi/vong-1');
 });
+//show teams
+router.get('/teams', async (req, res, next) => {
+ 
+    let teams = await mongoose.model('teams').find()
+    console.log(teams);
+  
+  return res.redirect('/admin/doi/vong-1');
+});
 
 router.get('/insert-team6', async (req, res, next) => {
   let insert = {
