@@ -1,72 +1,53 @@
  
-
-html {
+  
+.countdown>.row {
+	background-color: rgba(44,62,80 , 0.6 );
+	background-image: url('/homepage/images/countdown/pattern.png');
+	background-position: center;
+	background-repeat: repeat;
+}
+.countdown-container {
 	background-image: url('/homepage/images/countdown/logo.png');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;	
 }
-
-body {
-	background-color: rgba(44,62,80 , 0.6 );
-	background-image: url('/homepage/images/countdown/pattern.png');
-	background-position: center;
-	background-repeat: repeat;
-	font-family: 'Raleway', 'Arial', sans-serif;
-}
-
-.countdown-container {
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
-	z-index: -1 !important;
-}
-
 .clock-item .inner {
 	height: 0px;
-	padding-bottom: 100%;
 	position: relative;	
 	width: 100%;
-}
-
-.clock-canvas {
 	background-color: rgba(255, 255, 255, .1);
 	border-radius: 50%;
-	height: 0px;
-	padding-bottom: 100%;
+	padding-top: 100%;
 	box-shadow: 0 0 8px 4px #9f8c52;
 }
-
+.clock-item {
+	vertical-align: middle;
+}
 .text {
-	color: #fff;	
-	font-size: 30px;
-	font-weight: bold;	
-	margin-top: -50px;
 	position: absolute;
+	margin-top: -4vh;
 	top: 50%;
+	color: #fff;	
+	font-weight: bold;	
 	text-align: center;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 	width: 100%;
 }
 
 .text .val {
-	font-size: 50px;
+	font-size: calc(100% + 1.5vw + 1.5vh);
 }
 
 .text .type-time {
-	font-size: 20px;
+	font-size: calc(50% + 0.5vh + 0.5vw);
 }
-
-@media (min-width: 768px) and (max-width: 991px) {
-	.clock-item {
-		margin-bottom: 30px;		
-	}
+label {
+	padding: 2vw+2vh;
+	font-size: calc(100% + 2vw + 2vh);
+	background: none !important;
+	text-align: center;
+	width: 100%;
+	color: #89bdf8
 }
-
-@media (max-width: 767px) {
-	.clock-item {
-		margin: 0px 30px 30px 30px;
-	}
-}
+ 
