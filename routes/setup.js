@@ -123,5 +123,16 @@ router.get('/insert-team2', async (req, res, next) => {
   let buyerInfo = await mongoose.model('teams').create(insert);
   return res.redirect('../admin/doi/vong-1');
 });
-
+ 
+  setup: (models, courseYear) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        
+      }
+       catch (err) {
+        reject (err);
+      }
+    });
+  }
+ 
 module.exports = router

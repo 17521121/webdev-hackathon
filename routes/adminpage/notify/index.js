@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var { success, errorProcess } = require('../../../services/returnToUser');
 var slugify = require('slugify');
 var { checkPermission } = require('../../../services/checkPermission');
- 
+var randomString = require('randomstring');
 var router = require('express').Router();
 var multer = require('multer')
 var { IS_USER } = require('../../../config/constants');
@@ -77,9 +77,9 @@ module.exports = router => {
       attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
     if (attachments.length)
-      sendMail('"Web Hackathon" <webuit@gmail.com>',  sendTo , req.body.subject, req.body.content, attachments);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, req.body.subject, req.body.content, attachments);
     else
-      sendMail('"Web Hackathon" <webuit@gmail.com>',  sendTo , req.body.subject, req.body.content);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-all');
   })
 
@@ -90,19 +90,35 @@ module.exports = router => {
       attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
     if (attachments.length)
-      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo, req.body.subject, req.body.content, attachments);
     else
-      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo , req.body.subject, req.body.content);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo, req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-specify');
   })
 
   //Thông báo random code cho đội qua vòng 1
   router.get('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
-    res.render("adminpage/notify/randCode");
+    let randCode = await mongoose.model("randCode").find({}).populate("teams");
+    return res.render("adminpage/notify/randCode", { randCode });
   })
-  router.post('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
 
-    res.redirect("/admin");
+  //gửi random code
+  router.post('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
+    //nodemailer
+    let subject = "Chúc mừng đội bạn đã vượt qua vòng 1!"     //subject 
+    let content = "Đội bạn đã vượt qua vòng 1, hãy dùng mã code nhận được bên dưới để tham gia vòng 2 nhé! \
+                  Hạn dùng của mã code là 1 ngày kể từ thời điểm nhận được mã code";     // content
+
+    let randCode = await mongoose.model("randCode").find({}).populate("teams");
+    await randCode.forEach(team => {
+      let sendTo = team.teamId.emailLeader;
+      let rand = randomString.generate(8);
+      team.text = rand;
+      team.expired = new Date().setDate(new Date().getDate() + 1);  //ngày kế tiếp sau khi nhận được mã code
+      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, subject, content + "\n" + rand);
+    })
+
+    return res.redirect("/admin/passround-1");
   })
 }
 
