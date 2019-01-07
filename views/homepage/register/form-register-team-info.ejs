@@ -17,9 +17,21 @@
     </div>
     <!-- /row -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
                 <input type="password" name="password" class="form-control required" placeholder="Mật khẩu">
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <select name="platform" class="form-control required" placeholder="Chọn nền tảng lập trình">
+                    <% PLATFORMS.map(item => { %>
+                        <option value='<%- item %>'><%- item %></option>
+                    <% }) %>
+                </select>
             </div>
         </div>
     </div>
