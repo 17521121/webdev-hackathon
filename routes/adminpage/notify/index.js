@@ -2,13 +2,7 @@ var mongoose = require('mongoose');
 var { success, errorProcess } = require('../../../services/returnToUser');
 var slugify = require('slugify');
 var { checkPermission } = require('../../../services/checkPermission');
-/*  socket module */
-// var express = require('express');
-// var app = express();
-// var server = require('http').createServer(app);
-// var socket = require('socket.io');
-// var io = socket.listen(server);
-/* end socket module */
+ 
 var router = require('express').Router();
 var multer = require('multer')
 var { IS_USER } = require('../../../config/constants');
@@ -35,8 +29,8 @@ var transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: 'dangquoctienvktl@gmail.com', // generated ethereal user
-    pass: 'chinhlatoi68@1' // generated ethereal password
+    user: 'webuit@gmail.com', // generated ethereal user
+    pass: 'pass' // generated ethereal password
   }
 });
 var sendMail = function (from, to, subject, content, attachments) {
@@ -55,8 +49,6 @@ var sendMail = function (from, to, subject, content, attachments) {
     }
     console.log('Message sent: %s', info.messageId);
     // Preview only available when sending through an Ethereal account
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   });
@@ -85,9 +77,9 @@ module.exports = router => {
       attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
     if (attachments.length)
-      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>',  sendTo , req.body.subject, req.body.content, attachments);
+      sendMail('"Web Hackathon" <webuit@gmail.com>',  sendTo , req.body.subject, req.body.content, attachments);
     else
-      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>',  sendTo , req.body.subject, req.body.content);
+      sendMail('"Web Hackathon" <webuit@gmail.com>',  sendTo , req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-all');
   })
 
@@ -98,10 +90,19 @@ module.exports = router => {
       attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
     if (attachments.length)
-      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo , req.body.subject, req.body.content, attachments);
     else
-      sendMail('"Web Hackathon" <dangquoctienvktl@gmail.com>', req.body.sendTo , req.body.subject, req.body.content);
+      sendMail('"Web Hackathon" <webuit@gmail.com>', req.body.sendTo , req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-specify');
+  })
+
+  //Thông báo random code cho đội qua vòng 1
+  router.get('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
+    res.render("adminpage/notify/randCode");
+  })
+  router.post('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
+
+    res.redirect("/admin");
   })
 }
 
