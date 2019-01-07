@@ -1,0 +1,11 @@
+<div class="container" style="
+    margin-bottom: 100px;
+    text-align: center;
+">
+    <!--Logo các nhà tài trợ-->
+    <h3>Các nhà tài trợ</h3>
+    <% sponsors.map(item => { %>
+      <a href='https://<%- item.link %>' target="_blank"><img src="<%- item.linkLogo %>" style="width: 80px; height: 50px; margin: 20px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="<%- item.name %>">
+    <% }) %>
+    
+  </div>
