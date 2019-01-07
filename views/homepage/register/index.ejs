@@ -54,7 +54,22 @@
 	<!-- End Header -->
 
 	<main>
+		
 		<div id="form_container">
+				<div class='container'>	
+					<div class="row">
+						<% if(data == 'error') { %> 
+						<div class=" col-md-12 alert alert-danger mb-0">
+							<strong>Danger!</strong> Đăng kí không thành công!
+						</div>
+						<% } else if (data == 'success') { %>		
+						<div class=" col-md-12 alert alert-success mb-0 ">
+							<strong>Success!</strong> Đăng kí thành công!
+						</div>
+						<% } %>	
+					</div>
+				</div>
+				
 			<div class="row">
 				<div class="col-lg-5">
 					<div id="left_form">

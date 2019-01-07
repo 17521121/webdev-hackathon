@@ -13,6 +13,10 @@ var teams = new mongoose.Schema({
     type: String,
     require: true
   },
+  platform: { 
+    type: String,
+    require: true
+  },
   member: [{
     name: String,
     MSSV: String,
