@@ -65,7 +65,7 @@
                             <td><%- item.userId.fullname %></td>
                             <td><%- item.body.substr(0,100) %></td>
                             <td><%- item.createdDate.getDate() %>/<%- item.createdDate.getMonth() + 1 %>/<%- item.createdDate.getFullYear() %></td>
-                            <td><%- item.body.category %></td>
+                            <td><%- item.category.join(", ") %></td>
                             <td>
                               <a type="button" class="btn btn-icon btn-primary" href="/admin/bai-viet/<%- item._id %>/edit"><i class="fe fe-edit"></i></a>
                               <button type="button" class="btn btn-icon btn-primary" data-toggle="modal" data-target="#deletePosts" onclick="selectedId('<%- item._id %>')"><i class="fe fe-trash"></i></button>

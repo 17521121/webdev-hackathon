@@ -4,6 +4,7 @@ var uploadFile = require('../../../services/uploadFile');
 var slugify = require('slugify');
 var { checkPermission } = require('../../../services/checkPermission');
 var { IS_USER } = require('../../../config/constants')
+var { category } = require('../../../config/constants')
 
 module.exports = router => {
   router.get('/bai-viet', checkPermission(IS_USER), async (req, res, next) => {
@@ -16,10 +17,10 @@ module.exports = router => {
   })
 
   router.get('/bai-viet/them-bai-viet', checkPermission(IS_USER), async (req, res, next) => {
-    return res.render('adminpage/posts/create')
+    return res.render('adminpage/posts/create', { category })
   })
   var uploadImage = uploadFile.uploadFile('images');
-  router.post('/bai-viet', [uploadImage.any(),checkPermission(IS_USER)], async (req, res, next) => {
+  router.post('/bai-viet', [uploadImage.any(), checkPermission(IS_USER)], async (req, res, next) => {
     try {
       let link = [];
       req.files.length > 0 ? req.files.map(item => {
@@ -30,7 +31,7 @@ module.exports = router => {
         item.link = item.destination.substring(6, item.destination.length) + '/' + item.filename;
         link.push(item.link);
       }) : null;
-      user = await mongoose.model('users').findOne({username: req.body.username});
+      user = await mongoose.model('users').findOne({ username: req.body.username });
       let insert = {
         ...req.body,
         imageLink: link,
@@ -38,7 +39,7 @@ module.exports = router => {
         createdDate: new Date(),
         userId: user._id
       }
-      await mongoose.model('posts').create(insert);
+      let post = await mongoose.model('posts').create(insert);
       return res.redirect('/admin/bai-viet')
     } catch (err) {
       next()
@@ -48,14 +49,14 @@ module.exports = router => {
   router.get('/bai-viet/:id/edit', checkPermission(IS_USER), async (req, res, next) => {
     try {
       let posts = await mongoose.model('posts').findById(req.params.id).populate('userId');
-      return res.render('adminpage/posts/edit', { posts })
+      return res.render('adminpage/posts/edit', { posts, category })
     } catch (err) {
       console.log(err)
       return errorProcess(res, err);
     }
   })
 
-  router.post('/bai-viet/:id', [uploadImage.any(),checkPermission(IS_USER)], async (req, res, next) => {
+  router.post('/bai-viet/:id', [uploadImage.any(), checkPermission(IS_USER)], async (req, res, next) => {
     try {
       let link = [];
       req.files.length > 0 ? req.files.map(item => {

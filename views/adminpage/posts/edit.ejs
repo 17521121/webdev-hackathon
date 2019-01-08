@@ -51,7 +51,9 @@
                       </div>
                       <div class="form-group">
                         <label class="form-label">Category</label>
-                        <input type="text" class="form-control" name="title" placeholder="Tiêu đề" value="<%- posts.category %>" />
+                        <% category.map( i => { %>
+                          <input style="margin: 20px; padding: 10px" type="checkbox" name="category" id="<%- i %>" value="<%- i %>"><%- i %>
+                        <% }) %>
                       </div>
                     </div>
                   </div>

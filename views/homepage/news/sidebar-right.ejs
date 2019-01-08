@@ -5,25 +5,14 @@
        <div class="widget widget-cat">
           <h3 class="widget-title">Categories</h3>
           <span class="animate-border border-offwhite tw-mt-20"></span>
+      
           <ul class="widget-list">
-             <li><a href="#">Search Engine</a>
-                <span class="posts-count">(05)</span>
+            <% categoryCount.map( i => {  %>
+             <li><a href="/bai-viet?categoryType=<%= encodeURI(i.type) %>"><%- i.type %></a>
+                <span class="posts-count">(<%- i.numb  %>)</span>
              </li>
-             <li><a href="#">Business</a>
-                <span class="posts-count">(06)</span>
-             </li>
-             <li><a href="#">Marketing</a>
-                <span class="posts-count">(11)</span>
-             </li>
-             <li><a href="#">We development</a>
-                <span class="posts-count">(09)</span>
-             </li>
-             <li><a href="#">Seo Marketing</a>
-                <span class="posts-count">(13)</span>
-             </li>
-             <li><a href="#">Web Traffice</a>
-                <span class="posts-count">(13)</span>
-             </li>
+              
+            <% }) %>
           </ul>
           <!-- End Widget List -->
        </div>
