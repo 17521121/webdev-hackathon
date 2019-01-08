@@ -31,7 +31,7 @@ module.exports = router => {
   //get dang ki
   router.get('/submit/vong1', async (req, res, next) => {
     let sponsors = await mongoose.model('sponsors').find();
-    return res.render('homepage/submit/', { sponsors });
+    return res.render('homepage/submit', { sponsors });
   })
 
   router.post('/submit/vong1', upload.single('file1'), async (req, res) => {
