@@ -9,10 +9,9 @@ var posts = new mongoose.Schema({
     type: String,
     require: true
   },
-  category: {
-    type: String,
-    default: ""
-  },
+  category: [{
+    type: String
+  }],
   createdDate: {
     type: Date,
     require: true

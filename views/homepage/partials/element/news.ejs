@@ -1,0 +1,66 @@
+<section id="tw-blog" class="tw-blog">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay=".5s">
+				<h2>
+					<small>our blog</small>
+					BÀI VIẾT <span>MỚI NHẤT</span>
+				</h2>
+				<span class="animate-border border-offwhite ml-auto mr-auto tw-mt-20"></span>
+			</div>
+			<!-- Col end -->
+		</div>
+		<!-- Row End -->
+		<div class="row wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+			<% let count = 1 %>
+			<% shortMonthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+			<% news.map(item => { %>
+			<div class="col-lg-4 col-md-12">
+				<div class="tw-latest-post">
+					<div class="latest-post-media text-center">
+						<img src="/homepage/images/news/post<%- count++ %>.jpg" alt="blog_image_one" class="img-fluid">
+					</div>
+					<!-- End Latest Post Media -->
+					<div class="post-body">
+						<div class="post-item-date">
+							<div class="post-date">
+								<span class="date">
+									<%- item.createdDate.getDate() %></span>
+								<span class="month">
+									<%- shortMonthName[item.createdDate.getMonth()] %></span>
+							</div>
+						</div>
+						<!-- End Post Item Date -->
+						<div class="post-info">
+							<div class="post-meta">
+								<code class="post-author">
+									Posted by <a href="#">
+										<%- item.userId.fullname %></a>
+								</code>
+							</div>
+							<!-- End Post Meta -->
+							<h3 class="post-title"><a href="/bai-viet/view/<%- item._id %>">
+									<%- item.title %></a></h3>
+							<div class="entry-content">
+								<p>
+									<%- item.body.substr(0,100) %>
+								</p>
+							</div>
+							<!-- End Entry Content -->
+						</div>
+						<!-- End Post info -->
+					</div>
+					<!-- End Post Body -->
+				</div>
+				<!-- End Tw Latest Post -->
+			</div>
+			<% }) %>
+			<!-- End Col -->
+			<div class="col-md-12 text-center wow zoomIn" data-wow-duration="1s" data-wow-delay="1s">
+				<a href="/bai-viet" class="btn btn-primary btn-lg tw-mt-80">Xem tất cả bài viết</a>
+				</div>
+		</div>
+		<!-- End Row -->
+	</div>
+	<!-- Container End -->
+</section>

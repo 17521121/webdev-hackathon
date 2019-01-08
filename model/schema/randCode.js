@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var randCode = new mongoose.Schema({
   text: {
     type: String,
-    require: true
+    default: ""
   },
   teamId: { 
     type: mongoose.Schema.Types.ObjectId,

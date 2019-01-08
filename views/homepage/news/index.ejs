@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+<body>
+  <% include ../partials/canvas-menu %>
+  <% include ../partials/navbar %>
+
+
+  <div id="preloader">
+    <div data-loader="circle-side"></div>
+  </div><!-- /Preload -->
+
+  <div id="banner-area" class="banner-area" style="background-image:url(homepage/images/banner/banner5.jpg)">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="banner-heading">
+                <h1 class="banner-title">Our Blog</h1>
+                <ol class="breadcrumb">
+                   <li>Home</li>
+                   <li><a href="#">Blog</a></li>
+                </ol>
+             </div>
+          </div>
+          <!-- Col end -->
+       </div>
+       <!-- Row end -->
+    </div>
+    <!-- Container end -->
+ </div>
+ <!-- Banner area end -->
+
+
+ <section id="main-container" class="main-container">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-8 col-md-12">
+            	<% let count = 1 %>
+			        <% shortMonthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+		        	<% news.map(item => { %>
+             
+             <article class="post tw-news-post">
+                <div class="post-body">
+                   <div class="post-item-date">
+                      <div class="post-date">
+                         <span class="date"><%- item.createdDate.getDate() %></span>
+                         <span class="month"><%- shortMonthName[item.createdDate.getMonth()] %></span>
+                      </div>
+                   </div>
+                   <!-- End Post Item Date -->
+                  <% include ./entry-header %>
+                   <!-- header end -->
+                   <div class="entry-content">
+                      <p>
+                        	<%- item.body.substr(0,200) %>
+                      </p>
+                   </div>
+                   <!-- End Entry Content -->
+                   <div class="post-footer">
+                      <a href="/bai-viet/view/<%- item._id %>" class="btn btn-dark">Continue <i class="icon icon-arrow-right"></i></a>
+                   </div>
+                   <!-- End Post Footer -->
+                </div>
+                <!-- End Post Body -->
+             </article>
+             <% }) %>
+
+             <% if(totalPage > 1) { %>
+             <div class="paging text-center">
+                <ul class="pagination justify-content-center">
+
+                  <% if( parseInt(page) > 1){ %>
+                   <li><a href="/bai-viet?page=<%- parseInt(page) - 1 %>"><i class="icon icon-arrow-left"></i></a></li>
+                  <% } %>
+
+                  <% for(var i = 0; i< totalPage; i++ ) {%>
+                      <% if( i != (parseInt(page) - 1)){%>
+                        <li><a href="/bai-viet?page=<%- i+1 %>"><%- i+1 %></a></li>
+                      <% } else { %>
+                          <li  class="active" ><a><%- i+1 %></a></li>
+                      <% } %>
+                  <% } %>
+                  <% if(parseInt(page) < parseInt(totalPage)){ %>
+                   <li><a href="/bai-viet?page=<%- parseInt(page) + 1 %>"><i class="icon icon-arrow-right"></i></a></li>
+                  <% } %>  
+                </ul>
+                <!-- Pagination End -->
+             </div>
+             <!-- paging End -->
+             <% } %>
+          </div>
+          <!-- Content Col end -->
+
+
+          <% include ./sidebar-right %>
+
+       </div>
+       <!-- Main row end -->
+    </div>
+    <!-- Container end -->
+ </section>
+ <!-- Main container end -->
+
+
+  <!-- End Header -->
+
+   
+  <!-- end footer-->
+  <% include ../partials/sponsors %>
+  <% include ../partials/footer %>
+
+  <div class="cd-overlay-nav">
+    <span></span>
+  </div>
+  <!-- cd-overlay-nav -->
+
+  <div class="cd-overlay-content">
+    <span></span>
+  </div>
+  <!-- cd-overlay-content -->
+
+  <!-- SCRIPTS -->
+  <% include ../partials/scripts %>
+ 
+</body>
+
+</html>

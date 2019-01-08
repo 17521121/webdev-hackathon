@@ -1,0 +1,17 @@
+<div class="entry-header">
+    <div class="post-meta">
+       <span class="post-author">
+          Posted By<a href="#">	<%- item.userId.fullname %></a>
+       </span>
+       <span class="post-cat">
+          <i class="icon icon-folder"></i>
+          <a href="#"><% item.category.join(", ") %></a>
+        </span>
+       <span class="post-comment"><i class="icon icon-comment"></i>5 <a href="#" class="comments-link">Comments</a></span>
+    </div>
+    <h2 class="entry-title">
+       <a href="/bai-viet/view/<%- item._id %>">	<%- item.title %></a>
+    </h2>
+    <hr>
+    <!-- End Post Meta -->
+ </div>
