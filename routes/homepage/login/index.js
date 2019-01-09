@@ -8,9 +8,17 @@ module.exports = router => {
   })
   //post dang nhap
   router.post("/dang-nhap", (req, res, next) => {
-    mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader }, (err, team => {
-      console.log("ok")
-      
-    }))
+    mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader }, (err, team) => {
+      if (team) {
+        bcrypt.compare(req.body.password, team.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return res.redirect('/');
+          }
+          return res.redirect("/dang-nhap")
+        })
+      }
+      return res.redirect("/dang-nhap")
+    })
   })
 }
