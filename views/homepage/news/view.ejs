@@ -3,12 +3,18 @@
 
 
 <!-- Mirrored from demo.themewinter.com/html/seobin/news-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jan 2019 01:05:40 GMT -->
-<% include ../partials/head %>
+
+<head>
+   <% include ../partials/head %>
+   <title>Bài viết</title>
+   
+</head>
 
 <body>
-  
-  <% include ../partials/canvas-menu %>
-  <% include ../partials/navbar %>
+   
+
+   <% include ../partials/canvas-menu %>
+   <% include ../partials/navbar %>
 
 
    <div id="banner-area" class="banner-area" style="background-image:url(/homepage/images/banner/banner5.jpg)">
@@ -64,6 +70,11 @@
                         <div class="share-items pull-right">
                            <ul class="post-social-icons unstyled">
                               <li><strong>Share: </strong></li>
+                              <!-- <li>
+                                 <div class="fb-share-button" data-href="/bai-viet/view/<%- item._id %>" data-layout="button_count">
+                                 </div>
+                              </li> -->
+
                               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -78,13 +89,13 @@
                   <!-- End Post Body -->
                </div>
                <!-- Post Content End -->
-              <% include ./author-box %>
+               <% include ./author-box %>
                <!-- Author Box End -->
                <nav class="post-navigation clearfix">
                   <div class="post-previous">
                      <a href="#">
                         <h3>
-                           Seven financial tips for people <br/>in financial world
+                           Seven financial tips for people <br />in financial world
                         </h3>
                         <span><i class="icon icon-arrow-left"></i>Previous Post</span>
                      </a>
@@ -93,7 +104,7 @@
                   <div class="post-next">
                      <a href="#">
                         <h3>
-                           What exactly mutual, written<br/> by David Faulk
+                           What exactly mutual, written<br /> by David Faulk
                         </h3>
                         <span>Next Post <i class="icon icon-arrow-right"></i></span>
                      </a>
@@ -116,7 +127,8 @@
                                  <span class="comment-date">Dec 20, 2017</span>
                               </div>
                               <div class="comment-content">
-                                 <p>Life is good. Here we are in the last couple months of summer with its warm weather, family
+                                 <p>Life is good. Here we are in the last couple months of summer with its warm
+                                    weather, family
                                     activities, getting ready for the children.</p>
                               </div>
                            </div>
@@ -135,7 +147,8 @@
                                        <span class="comment-date">Dec 20, 2017</span>
                                     </div>
                                     <div class="comment-content">
-                                       <p>Life is good. Here we are in the last couple months of summer with its warm weather,
+                                       <p>Life is good. Here we are in the last couple months of summer with its warm
+                                          weather,
                                           family activities, getting</p>
                                     </div>
                                  </div>
@@ -155,7 +168,8 @@
                                  <span class="comment-date">Dec 20, 2017</span>
                               </div>
                               <div class="comment-content">
-                                 <p>Life is good. Here we are in the last couple months of summer with its warm weather, family
+                                 <p>Life is good. Here we are in the last couple months of summer with its warm
+                                    weather, family
                                     activities, getting ready for the children.</p>
                               </div>
                            </div>
@@ -172,7 +186,8 @@
                                  <span class="comment-date">Dec 20, 2017</span>
                               </div>
                               <div class="comment-content">
-                                 <p>Life is good. Here we are in the last couple months of summer with its warm weather, family
+                                 <p>Life is good. Here we are in the last couple months of summer with its warm
+                                    weather, family
                                     activities, getting ready for the children.</p>
                               </div>
                            </div>
@@ -190,13 +205,15 @@
                      <div class="row">
                         <div class="col-lg-6">
                            <div class="form-group">
-                              <input class="form-control" name="name" id="name" placeholder="Full Name" type="text" required>
+                              <input class="form-control" name="name" id="name" placeholder="Full Name" type="text"
+                                 required>
                            </div>
                         </div>
                         <!-- Col 4 end -->
                         <div class="col-lg-6">
                            <div class="form-group">
-                              <input class="form-control" name="email" id="email" placeholder="Email Address" type="email" required>
+                              <input class="form-control" name="email" id="email" placeholder="Email Address" type="email"
+                                 required>
                            </div>
                         </div>
                         <div class="col-lg-12">
@@ -206,7 +223,8 @@
                         </div>
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <textarea class="form-control required-field" id="message" placeholder="Comments" rows="5" required></textarea>
+                              <textarea class="form-control required-field" id="message" placeholder="Comments" rows="5"
+                                 required></textarea>
                            </div>
                         </div>
                         <!-- Col 12 end -->
@@ -241,9 +259,11 @@
       =============================================================================-->
 
    <!-- initialize jQuery Library -->
+
    <% include ../partials/scripts %>
 </body>
 
 
 <!-- Mirrored from demo.themewinter.com/html/seobin/news-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Jan 2019 01:05:41 GMT -->
+
 </html>

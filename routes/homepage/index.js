@@ -6,7 +6,7 @@ router.get('/', async (req, res, next) => {
 	let news = await mongoose.model('posts').find().populate('userId')
 														.sort({"createdDate": -1})
 														.limit(3);
-
+	await console.log(req.isAuthenticated());
 	return res.render('homepage', {sponsors, news});
 })
 

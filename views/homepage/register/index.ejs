@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-	input[type=number]::-webkit-inner-spin-button, 
-	input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-</style>
-<% include ../partials/head %> 
+
+<% include ../partials/head %>
 
 <head>
+	<style>
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+			-webkit-appearance: none; 
+			margin: 0; 
+			}
+	</style>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,7 +39,7 @@
 
 	<script src="/homepage/register/js/modernizr.js"></script>
 	<!-- Modernizr -->
-
+	<title>Đăng kí</title>
 </head>
 
 <body>
@@ -49,27 +51,28 @@
 	<div id="loader_form">
 		<div data-loader="circle-side-2"></div>
 	</div><!-- /loader_form -->
-
+	
+	<% include ../partials/canvas-menu %>
 	<% include ../partials/navbar %>
 	<!-- End Header -->
 
 	<main>
-		
+
 		<div id="form_container">
-				<div class='container'>	
-					<div class="row">
-						<% if(data == 'error') { %> 
-						<div class=" col-md-12 alert alert-danger mb-0">
-							<strong>Danger!</strong> Đăng kí không thành công!
-						</div>
-						<% } else if (data == 'success') { %>		
-						<div class=" col-md-12 alert alert-success mb-0 ">
-							<strong>Success!</strong> Đăng kí thành công!
-						</div>
-						<% } %>	
+			<div class='container'>
+				<div class="row">
+					<% if(data == 'error') { %>
+					<div class=" col-md-12 alert alert-danger mb-0">
+						<strong>Danger!</strong> Đăng kí không thành công!
 					</div>
+					<% } else if (data == 'success') { %>
+					<div class=" col-md-12 alert alert-success mb-0 ">
+						<strong>Success!</strong> Đăng kí thành công!
+					</div>
+					<% } %>
 				</div>
-				
+			</div>
+
 			<div class="row">
 				<div class="col-lg-5">
 					<div id="left_form">
@@ -136,6 +139,7 @@
 	<!-- Theme script -->
 	<script src="/homepage/register/js/functions.js"></script>
 	<script src='/homepage/register/js/memberForm.js'></script>
+	<% include ../partials/scripts %>
 </body>
 
 </html>
