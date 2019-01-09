@@ -2061,7 +2061,7 @@ input.round-btn {
 
 =============================*/
 .tw-footer {
-  padding: 75px 0 0;
+  padding-top: 4vw;
   background-color: #151414;
   position: relative;
   z-index: 2; }
@@ -2080,15 +2080,18 @@ input.round-btn {
     color: #FA6742; }
 
 .tw-footer-info-box {
-  position: absolute;
-  top: -122px;
-  background: #202020;
-  padding: 40px;
-  z-index: 2; }
+max-width: 400px;
+background: #202020;
+
+padding: 40px;
+
+z-index: 2;
+
+}
   .tw-footer-info-box .footer-social-link h3 {
     color: #fff;
     font-size: 24px;
-    margin-bottom: 25px; }
+    }
   .tw-footer-info-box .footer-social-link ul {
     list-style-type: none;
     padding: 0;
@@ -2117,7 +2120,7 @@ input.round-btn {
       background-color: #B7242A; }
 
 .footer-awarad {
-  margin-top: 285px;
+  
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
