@@ -4,11 +4,11 @@ html * {
 }
 
 body {
-  background: #e4edf2;
+  /* background: #e4edf2; */
   font-size: 16px;
   line-height: 1.5;
   font-family: "Roboto Condensed", Arial, sans-serif;
-  color: #555
+  color: #555;
 }
 
 h1, h2, h3, h4, h5, h6 {

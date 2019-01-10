@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<% include ../partials/head %>
+
 
 <head>
 	<style>
@@ -9,9 +9,14 @@
 		input[type=number]::-webkit-outer-spin-button { 
 			-webkit-appearance: none; 
 			margin: 0; 
-			}
+		}
+		body {
+			background-image: url('/homepage/register/img/back.jpg') !important;
+			background-repeat: repeat;
+		}	
+		
 	</style>
-
+	<% include ../partials/head %>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +24,7 @@
 	<meta name="author" content="Ansonika">
 
 	<!-- Favicons-->
-	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" href="/homepage/register/img/apple-touch-icon-57x57-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/homepage/register/img/apple-touch-icon-72x72-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/homepage/register/img/apple-touch-icon-114x114-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/homepage/register/img/apple-touch-icon-144x144-precomposed.png">
@@ -51,7 +56,7 @@
 	<div id="loader_form">
 		<div data-loader="circle-side-2"></div>
 	</div><!-- /loader_form -->
-	
+
 	<% include ../partials/canvas-menu %>
 	<% include ../partials/navbar %>
 	<!-- End Header -->
@@ -116,7 +121,6 @@
 		</div><!-- /Form_container -->
 	</main>
 
-	<% include ../partials/sponsors %>
 	<% include ../partials/footer %>
 	<!-- end footer-->
 	<div class="cd-overlay-nav">
@@ -139,6 +143,23 @@
 	<!-- Theme script -->
 	<script src="/homepage/register/js/functions.js"></script>
 	<script src='/homepage/register/js/memberForm.js'></script>
+	<script src="/homepage/js/popper.min.js"></script>
+	<!-- Bootstrap jQuery -->
+	<script src="/homepage/js/bootstrap.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="/homepage/js/owl-carousel.2.3.0.min.js"></script>
+	<!-- Waypoint -->
+	<script src="/homepage/js/waypoints.min.js"></script>
+	<!-- Counter Up -->
+	<script src="/homepage/js/jquery.counterup.min.js"></script>
+	<!-- Video Popup -->
+	<script src="/homepage/js/jquery.magnific.popup.js"></script>
+	<!-- WOW JS -->
+	<script src="/homepage/js/wow.min.js"></script>
+	<!-- SmoothScroll JS -->
+	<script src="/homepage/js/smoothscroll.js"></script>
+	<!-- Template Custom -->
+	<script src="/homepage/js/main.js"></script>
 </body>
 
 </html>
