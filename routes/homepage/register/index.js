@@ -8,7 +8,8 @@ module.exports = router => {
   //get dang ki
   router.get('/dang-ki', async (req, res, next) => {
     let sponsors = await mongoose.model('sponsors').find();
-    return res.render('homepage/register', { sponsors, PLATFORMS, data: 'data' });
+    let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+    return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'data' });
   })
   //post dang ki
   router.post('/dang-ki', async (req, res, next) => {
@@ -36,8 +37,8 @@ module.exports = router => {
         team.password = hash;
         await mongoose.model('teams').create(team);
       });
-      let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
-      return res.render('homepage/register', { sponsors, PLATFORMS, data: 'success', teamLogin });
+     
+      return res.render('homepage/register', { sponsors, PLATFORMS, data: 'success' });
     }
     catch (err) {
       return res.render('homepage/register', { sponsors, PLATFORMS, data: 'error' });
