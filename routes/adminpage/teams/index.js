@@ -16,7 +16,7 @@ module.exports = router => {
             let team = await mongoose.model('teams').findOne({ _id: req.params.id });
             team.isPaid = !team.isPaid;
             await mongoose.model('teams').findOneAndUpdate({ _id: req.params.id}, team, {new: true});
-            return success(res, "Done", null)
+            return res.redirect('/admin/doi/trang-thai')
         }
         catch (err){
             console.log(err);
