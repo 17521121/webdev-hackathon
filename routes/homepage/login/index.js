@@ -12,8 +12,13 @@ module.exports = router => {
     if(!team) {
       return res.render('homepage/login');
     }
-    if(bcrypt.compareSync(req.body.password, team.password)) {
-      console.log('you are loged in')
+    //check password
+    if(!bcrypt.compareSync(req.body.password, team.password)) {
+      return res.render('homepage/login');
     }
+
+    res.cookie('team', team._id, {signed: true});
+    return res.redirect('/submit/vong1');
+
   })
 }
