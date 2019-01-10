@@ -8,8 +8,6 @@ module.exports = router => {
       let categoryType = req.query.categoryType || null;
       let sponsors = await mongoose.model('sponsors').find();
       let page = req.query.page || 1;
-      //categoryType ? { 'category': { "$eq": i } } : { }
-
       let numberNews = await mongoose.model('posts').count(categoryType ? { 'category': { "$eq": categoryType } } : { });
       let totalPage = Math.ceil(numberNews / pageSize);
       let news = await mongoose.model('posts').find(categoryType ? { 'category': { "$eq": categoryType } } : { }).populate('userId')
@@ -20,7 +18,8 @@ module.exports = router => {
         let numb = await mongoose.model('posts').count({ 'category': { "$eq": i } });
         categoryCount.push({ type: i, numb: numb ? numb : 0 })
       }
-      return res.render("homepage/news", { sponsors, news, totalPage, page, categoryType, categoryCount })
+      let team = await mongoose.model('teams').findById(req.signedCookies.team);
+      return res.render("homepage/news", { sponsors, news, totalPage, page, categoryType, categoryCount, team })
     }
     catch (err) {
       return errorProcess(res, err);

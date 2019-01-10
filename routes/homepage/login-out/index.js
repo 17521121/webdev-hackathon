@@ -6,6 +6,10 @@ module.exports = router => {
   router.get('/dang-nhap', (req, res, next) => {
     return res.render('homepage/login');
   })
+  router.get('/dang-xuat', async (req, res, next) => {
+    await res.clearCookie("team", {path:"/"});
+    return res.redirect('/');
+  })
   //post dang nhap
   router.post("/dang-nhap", async (req, res, next) => {
     let team = await mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader });
@@ -18,7 +22,7 @@ module.exports = router => {
     }
 
     res.cookie('team', team._id, {signed: true});
-    return res.redirect('/submit/vong1');
+    return res.redirect('/');
 
   })
 }

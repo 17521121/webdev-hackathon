@@ -79,9 +79,20 @@
                 <!-- End of Dropdown menu -->
               </li>
               <!-- End Dropdown -->
-          
-            <li class="nav-item"><a class="nav-link" href="/dang-ki">Đăng kí!</a></li>
-            <li class="nav-item"><a class="nav-link" href="/dang-nhap">Đăng nhập</a></li>
+              <% if(teamLogin) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" data-toggle="dropdown">
+                  Xin chào, "<%- teamLogin.teamName %>"
+                  <span class="tw-indicator"><i class="fa fa-angle-down"></i></span>
+                  <ul class="dropdown-menu tw-dropdown-menu">
+                    <li class=""><a class="" href="/thong-tin-doi">Thông tin đội</a></li>
+                    <li class=""><a class="" href="/dang-xuat">Đăng xuất</a></li>
+                  </ul>
+                </a>
+              <% } else { %>
+               <li class="nav-item"><a class="nav-link" href="/dang-ki">Đăng kí!</a></li>
+               <li class="nav-item"><a class="nav-link" href="/dang-nhap">Đăng nhập</a></li>
+              <% } %>
           </ul>
           <!-- End Navbar Nav -->
         </div>

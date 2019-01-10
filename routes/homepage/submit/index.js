@@ -21,7 +21,8 @@ module.exports = router => {
   //get dang ki
   router.get('/submit/vong1', check.checkTeamPermission, async (req, res, next) => {
     let sponsors = await mongoose.model('sponsors').find();
-    return res.render('homepage/submit', { sponsors, deadline: constants.deadline_vong1 });
+    let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+    return res.render('homepage/submit', { sponsors, deadline: constants.deadline_vong1, teamLogin });
   })
 
   router.post('/submit/vong1', check.checkTeamPermission, 
