@@ -7,10 +7,13 @@ module.exports = router => {
     return res.render('homepage/login');
   })
   //post dang nhap
-  router.post("/dang-nhap", (req, res, next) => {
-    mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader }, (err, team => {
-      console.log("ok")
-      
-    }))
+  router.post("/dang-nhap", async (req, res, next) => {
+    let team = await mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader });
+    if(!team) {
+      return res.render('homepage/login');
+    }
+    if(bcrypt.compareSync(req.body.password, team.password)) {
+      console.log('you are loged in')
+    }
   })
 }
