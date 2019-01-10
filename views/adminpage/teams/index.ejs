@@ -43,7 +43,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <% teams.map(team => { let disable = 'disabled'; %>
+                        <% teams.map(team => {  %>
                           <tr>
                             <td><%- team.teamName %></td>
                             <td><%- team.emailLeader %></td>
@@ -61,7 +61,7 @@
                                                                                                 font-size: 32px;
                                                                                                 font-weight: bolder;
                                                                                                 "></i></td>
-                                <% disable = 'enabled'; } %>   
+                                <%  } %>   
                             <% } else { %>
                                 <td class="text-center"><%- team.submissions[0].score %></td>
                                 <td class="text-center"><%- team.submissions[1].score %></td>
@@ -70,7 +70,7 @@
                             <td align="center">
                               <a type="button" class="btn btn-icon btn-primary" href="/admin/doi/<%- team._id %>/view"><i class="fe fe-eye"></i></a>
                                <% if(option == 'trang-thai') { %>
-                                  <button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#ispaid" <%- disable %> data-disable="<%- team._id %>" onclick="selectedId('<%- team._id %>')"><i class="fe fe fe-credit-card"></i></button>
+                                  <button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#ispaid" data-disable="<%- team._id %>" onclick="selectedId('<%- team._id %>')"><i class="fe fe fe-credit-card"></i></button>
                                  
                                 <% } else { %>
                                   <button type="button" class="btn btn-icon btn-warning" data-toggle="modal"  data-score='<%- team.submissions[0].score %>,<%- team.submissions[1].score %>' data-target="#updateScore" data-id='<%- team._id %>' onclick="updateSelectedId('<%- team._id %>')"><i class="fe fe-edit"></i></button>                                

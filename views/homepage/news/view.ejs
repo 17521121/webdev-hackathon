@@ -7,7 +7,10 @@
 <head>
    <% include ../partials/head %>
    <title>Bài viết</title>
-   
+   <meta property="og:type" content="website">
+   <meta property="og:title" content="<%- item.title %>">
+   <meta property="og:description" content=" <%- item.body.substr(0,200) %>">
+   <!-- <meta property="og:image" content=""> -->
 </head>
 
 <body>

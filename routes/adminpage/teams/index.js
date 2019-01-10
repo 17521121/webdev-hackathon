@@ -6,7 +6,7 @@ var { IS_USER } = require('../../../config/constants')
 module.exports = router => {
     //get admin/doi
     router.get('/doi', checkPermission(IS_USER), async (req, res, next) => {
-        let teams = await mongoose.model('teams').find();
+        let teams = await mongoose.model('teams').find({isPaid: true});
         let option = ''; 
         return res.render('adminpage/teams', {teams, option});
     })
@@ -14,7 +14,7 @@ module.exports = router => {
     router.post('/doi/trang-thai/:id/thanh-toan', checkPermission(IS_USER), async (req, res, next) => {
         try {
             let team = await mongoose.model('teams').findOne({ _id: req.params.id });
-            team.isPaid = true;
+            team.isPaid = !team.isPaid;
             await mongoose.model('teams').findOneAndUpdate({ _id: req.params.id}, team, {new: true});
             return success(res, "Done", null)
         }
