@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('signed-cookie-via-secret-haha'));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30 days' }));
 app.set('Cache-Control', 'max-age=3000');
 

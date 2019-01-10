@@ -7,18 +7,18 @@ module.exports = router => {
     return res.render('homepage/login');
   })
   //post dang nhap
-  router.post("/dang-nhap", (req, res, next) => {
-    mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader }, (err, team) => {
-      if (team) {
-        bcrypt.compare(req.body.password, team.password, (err, isMatch) => {
-          if (err) throw err;
-          if (isMatch) {
-            return res.redirect('/');
-          }
-          return res.redirect("/dang-nhap")
-        })
-      }
-      return res.redirect("/dang-nhap")
-    })
+  router.post("/dang-nhap", async (req, res, next) => {
+    let team = await mongoose.model("teams").findOne({ emailLeader: req.body.emailLeader });
+    if(!team) {
+      return res.render('homepage/login');
+    }
+    //check password
+    if(!bcrypt.compareSync(req.body.password, team.password)) {
+      return res.render('homepage/login');
+    }
+
+    res.cookie('team', team._id, {signed: true});
+    return res.redirect('/submit/vong1');
+
   })
 }
