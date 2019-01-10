@@ -875,7 +875,7 @@ li.dropdown:hover .tw-mega-menu {
 
 .offcanvas-wrapper {
   position: fixed;
-  width: 400px;
+  width: 450px;
   right: -100%;
   z-index: 3;
   background: #fff;
@@ -888,7 +888,8 @@ li.dropdown:hover .tw-mega-menu {
   -o-transition: all 1s;
   transition: all 1s;
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  }
   .offcanvas-wrapper .menu-close-btn {
     position: absolute;
     top: 50px;
