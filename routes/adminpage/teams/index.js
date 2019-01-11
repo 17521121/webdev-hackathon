@@ -49,6 +49,23 @@ module.exports = router => {
         await mongoose.model('teams').findByIdAndUpdate({ _id: req.params.id }, team, {new: true});
         return res.redirect('../../doi');
     })
+
+    //post update pass vong 1
+    router.post('/doi/:id/pass', checkPermission(IS_USER), async (req, res, next) => {
+        try {
+            let team = await mongoose.model('teams').findOne({_id: req.params.id});
+            let rand = {
+                teamId: team._id
+            }
+            team.submissions[0].isPass = true;
+            await mongoose.model('teams').findOneAndUpdate({_id: req.params.id}, team, {new: true});
+            await mongoose.model('randCode').create(rand);
+            return redirect('../../doi');
+        }
+        catch (err) {
+            return res.redirect('../../doi');
+        }
+    })
     //get admin/doi
     router.get('/doi/:op', checkPermission(IS_USER), async (req, res, next) => {
         let teams = await mongoose.model('teams').find();
