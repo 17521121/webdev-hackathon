@@ -1,13 +1,35 @@
-<div class="container" style="
-    margin-bottom: calc(8vw);
-    text-align: center;
-    margin-top: calc(2vw);
-">
-  <!--Logo các nhà tài trợ-->
-  <h1 style="font-size: 38px; width: 100%; font-family: Lato">CÁC NHÀ TÀI TRỢ</h1>
-  <% sponsors.map(item => { %>
-  <a href='https://<%- item.link %>' target="_blank"><img src="<%- item.linkLogo %>" style="width: 80px; height: 50px; margin: 20px;"
-      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="<%- item.name %>">
-    <% }) %>
-
-</div>
+<section id="tw-clients" class="tw-clients">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <div class="section-heading">
+          <h2>
+            <small>Our Investors</small>
+            Các nhà <span>tài trợ</span>
+          </h2>
+          <span class="animate-border mr-auto ml-auto tw-mt-20 tw-mb-35"></span>
+        </div>
+      </div>
+      <!-- Col end -->
+    </div>
+    <!-- Title Row End -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="clients-carousel owl-carousel">
+          <% sponsors.map(item => { %>
+          <div class="client-logo-wrapper d-table">
+            <div class="client-logo d-table-cell">
+                <a href='https://<%- item.link %>' target="_blank"><img src="<%- item.linkLogo %>"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="<%- item.name %>"></a>
+            </div>
+            <!-- End Clients logo -->
+          </div>
+          <% }) %>
+        </div>
+        <!-- End Carousel -->
+      </div>
+      <!-- End Col -->
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
