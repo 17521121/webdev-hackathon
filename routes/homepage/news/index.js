@@ -18,8 +18,8 @@ module.exports = router => {
         let numb = await mongoose.model('posts').count({ 'category': { "$eq": i } });
         categoryCount.push({ type: i, numb: numb ? numb : 0 })
       }
-      let team = await mongoose.model('teams').findById(req.signedCookies.team);
-      return res.render("homepage/news", { sponsors, news, totalPage, page, categoryType, categoryCount, team })
+      let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+      return res.render("homepage/news", { sponsors, news, totalPage, page, categoryType, categoryCount, teamLogin })
     }
     catch (err) {
       return errorProcess(res, err);
@@ -35,7 +35,8 @@ module.exports = router => {
         let numb = await mongoose.model('posts').count({ 'category': { "$eq": i } });
         categoryCount.push({ type: i, numb: numb ? numb : 0 })
       }
-      return res.render("homepage/news/view", { item, sponsors, categoryCount });
+      let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+      return res.render("homepage/news/view", { item, sponsors, categoryCount, teamLogin });
     }
     catch (err) {
       return errorProcess(res, err);
