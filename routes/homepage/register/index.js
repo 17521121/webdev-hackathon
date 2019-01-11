@@ -13,8 +13,9 @@ module.exports = router => {
   })
   //post dang ki
   router.post('/dang-ki', async (req, res, next) => {
-    let sponsors = await mongoose.model('sponsors').find();
     try {
+      let sponsors = await mongoose.model('sponsors').find();
+      let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
       let team = {
         teamName: req.body.teamName,
         emailLeader: req.body.emailLeader,
@@ -38,10 +39,10 @@ module.exports = router => {
         await mongoose.model('teams').create(team);
       });
      
-      return res.render('homepage/register', { sponsors, PLATFORMS, data: 'success' });
+      return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'success' });
     }
     catch (err) {
-      return res.render('homepage/register', { sponsors, PLATFORMS, data: 'error' });
+      return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'error' });
     }
   })
 
