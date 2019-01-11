@@ -8,14 +8,17 @@ module.exports = router => {
   //get dang ki
   router.get('/dang-ki', async (req, res, next) => {
     let sponsors = await mongoose.model('sponsors').find();
-    let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
-    return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'data' });
+    return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'data' });
   })
   //post dang ki
   router.post('/dang-ki', async (req, res, next) => {
+    let sponsors = await mongoose.model('sponsors').find();
+    let isExist = await mongoose.model('teams').findOne({emailLeader: req.body.emailLeader});
+    let isExist2 = await mongoose.model('teams').findOne({teamName: req.body.teamName});
+    if(isExist || isExist2) {
+      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'error' });
+    }
     try {
-      let sponsors = await mongoose.model('sponsors').find();
-      let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
       let team = {
         teamName: req.body.teamName,
         emailLeader: req.body.emailLeader,
@@ -39,10 +42,10 @@ module.exports = router => {
         await mongoose.model('teams').create(team);
       });
      
-      return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'success' });
+      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'success' });
     }
     catch (err) {
-      return res.render('homepage/register', { sponsors, teamLogin, PLATFORMS, data: 'error' });
+      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'error' });
     }
   })
 
