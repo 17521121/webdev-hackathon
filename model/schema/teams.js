@@ -33,6 +33,7 @@ var teams = new mongoose.Schema({
     score: Number,
     path: String,
     round: Number,
+    isPass: {type: Boolean, default: false},
     judge: [{
       userId: {
         type: mongoose.Schema.Types.ObjectId,

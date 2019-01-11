@@ -98,7 +98,7 @@ module.exports = router => {
 
   //Thông báo random code cho đội qua vòng 1
   router.get('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
-    let randCode = await mongoose.model("randCode").find({}).populate("teams");
+    let randCode = await mongoose.model("randCode").find({}).populate("teamId");
     return res.render("adminpage/notify/randCode", { randCode });
   })
 
@@ -109,7 +109,7 @@ module.exports = router => {
     let content = "Đội bạn đã vượt qua vòng 1, hãy dùng mã code nhận được bên dưới để tham gia vòng 2 nhé! \
                   Hạn dùng của mã code là 1 ngày kể từ thời điểm nhận được mã code";     // content
 
-    let randCode = await mongoose.model("randCode").find({}).populate("teams");
+    let randCode = await mongoose.model("randCode").find({}).populate("teamId");
     await randCode.forEach(team => {
       let sendTo = team.teamId.emailLeader;
       let rand = randomString.generate(8);
