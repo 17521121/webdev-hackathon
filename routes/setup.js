@@ -25,6 +25,10 @@ router.get('/deleteData', async (req, res, next) => {
     for(const tem of tems){
       await mongoose.model('teams').findOneAndDelete({ _id: tem._id});
     }
+  let randCode = await mongoose.model('randCode').find();
+    for(const tem of randCode){
+      await mongoose.model('randCode').findOneAndDelete({ _id: tem._id});
+    }
   let sponsors = await mongoose.model('sponsors').find();
   for(const tem of sponsors){
     await mongoose.model('sponsors').findOneAndDelete({ _id: tem._id});
@@ -35,7 +39,7 @@ router.get('/deleteData', async (req, res, next) => {
 
 router.get('/delete', async (req, res, next) => {
  
-    await mongoose.model('teams').findOneAndDelete({ _id: '5c2a44508b2e5a083066d6d6'});
+    await mongoose.model('randCode').findOneAndDelete({ _id: '5c2a44508b2e5a083066d6d6'});
     //await mongoose.model('teams').findOneAndDelete({ _id: '5c2a41353b767426cc9add6a'});
   
   return res.redirect('/admin/doi/vong-1');
