@@ -110,13 +110,13 @@ module.exports = router => {
                   Hạn dùng của mã code là 1 ngày kể từ thời điểm nhận được mã code";     // content
 
     let randCode = await mongoose.model("randCode").find({}).populate("teamId");
-    await randCode.forEach(team => {
+    for(const team of randCode) {
       let sendTo = team.teamId.emailLeader;
       let rand = randomString.generate(8);
       team.text = rand;
       team.expired = new Date().setDate(new Date().getDate() + 1);  //ngày kế tiếp sau khi nhận được mã code
       sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, subject, content + "\n" + rand);
-    })
+    }
 
     return res.redirect("/admin/passround-1");
   })

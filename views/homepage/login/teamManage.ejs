@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/homepage/quan-li-doi/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/homepage/quan-li-doi/vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/homepage/quan-li-doi/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/homepage/quan-li-doi/css/main.css">
+  <title>Quản lí đội</title>
+</head>
+
+<body>
+
+  <% include ../partials/canvas-menu %>
+  <% include ../partials/navbar %>
+  <div class="container" style="margin-top: 3vw !important">
+    <h2>Trạng thái</h2>
+    <hr>
+    <div class="table100 ver3 m-b-110">
+      <div class="table100-head">
+        <table>
+          <thead>
+            <tr class="row100 head">
+              <th class="cell100 column1">Tên đội</th>
+              <th class="cell100 column2">Đội trưởng</th>
+              <th class="cell100 column3 text-center">Đóng tiền</th>
+              <th class="cell100 column4 text-center">Điểm vòng 1</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+            <tr class="row100 body">
+                <td class="cell100 column1">
+                    <%- teamLogin.teamName %>
+                  </td>
+                  <td class="cell100 column2">
+                      <%- teamLogin.emailLeader %>
+                    </td>
+                    <% if(teamLogin.isPaid == true) { %>
+                      <td class="cell100 column3 text-center"><i id="<%- teamLogin._id %>" class='fa fa-check' style="
+                                                                                        color: green ;
+                                                                                        "></i></td>
+                      <% } else { %>
+                      <td class="cell100 column3 text-center" ><i id="<%- teamLogin._id %>" class='fe fe-minus' style="
+                                                                                        color: red;
+                                                                                        font-size: 32px;
+                                                                                        font-weight: bolder;
+                                                                                        "></i></td>
+                      <%  } %>
+              <td class="cell100 column4 text-center">
+                <%- teamLogin.submissions[0].score %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 3vw !important">
+    <h2>Thành viên</h2>
+    <hr>
+    <div class="table100 ver3 m-b-110">
+      <div class="table100-head">
+        <table>
+          <thead>
+            <tr class="row100 head">
+              <th class="cell100 column1">Tên</th>
+              <th class="cell100 column2">MSSV</th>
+              <th class="cell100 column3">Số điện thoại</th>
+              <th class="cell100 column4">Trường</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1"><%- teamLogin.member[0].name %></td>
+              <td class="cell100 column2"><%- teamLogin.member[0].MSSV %></td>
+              <td class="cell100 column3"><%- teamLogin.member[0].phone %></td>
+              <td class="cell100 column4"><%- teamLogin.member[0].school %></td>
+            </tr>
+            <tr class="row100 body">
+              <td class="cell100 column1"><%- teamLogin.member[1].name %></td>
+              <td class="cell100 column2"><%- teamLogin.member[1].MSSV %></td>
+              <td class="cell100 column3"><%- teamLogin.member[1].phone %></td>
+              <td class="cell100 column4"><%- teamLogin.member[1].school %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     <h3 class="text-center" style="margin: 10px 0"><button type="button" onclick="canhbao()" class="text-warning">Huỷ đăng kí</button></h3>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 3vw !important">
+    <h2>Bảng xếp hạng</h2>
+    <hr>
+    <div class="table100 ver3 m-b-110">
+      <div class="table100-head">
+        <table>
+          <thead>
+            <tr class="row100 head">
+              <th class="cell100 column1">Tên đội</th>
+              <th class="cell100 column2">Thành viên 1</th>
+              <th class="cell100 column3">Thành viên 2</th>
+              <th class="cell100 column4">Điểm vòng 1</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+            <% teams.map( tm => { %>
+            <tr class="row100 body">
+              <td class="cell100 column1"><%- tm.teamName %></td>
+              <td class="cell100 column2"><%- tm.member[0].name %></td>
+              <td class="cell100 column3"><%- tm.member[1].name %></td>
+              <td class="cell100 column4"><%- tm.submissions[0].score %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <% include ../partials/sponsors %>
+  <% include ../partials/footer %>
+
+  <!--===============================================================================================-->
+  <script src="/homepage/vendor/bootstrap/js/popper.js"></script>
+  <!--===============================================================================================-->
+  <script src="/homepage/vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="/homepage/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="/homepage/js/owl-carousel.2.3.0.min.js"></script>
+  <% include ../partials/scripts %>
+
+  <script>
+    $('.js-pscroll').each(function () {
+      var ps = new PerfectScrollbar(this);
+
+      $(window).on('resize', function () {
+        ps.update();
+      })
+    });
+
+    function canhbao() {
+      var isConfirm = confirm('Bạn chắc chắn sẽ huỷ đăng kí chứ, kể cả khi đội bạn đã đóng lệ phí tham gia?')
+      if(isConfirm) {
+        $.post("/huy-dang-ki");
+      }
+    }
+
+  </script>
+  <!--===============================================================================================-->
+</body>
+
+</html>
