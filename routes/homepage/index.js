@@ -19,6 +19,11 @@ router.get('/info/fag', async (req, res, next) => {
 	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
 	return res.render('homepage/inform/fag', { sponsors, teamLogin });
 })
+router.get('/info/fag/the-le', async (req, res, next) => {
+	let sponsors = await mongoose.model('sponsors').find();
+	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+	return res.render('homepage/inform/rules', { sponsors, teamLogin });
+})
 
 require('./register')(router)
 require('./login-out')(router)
