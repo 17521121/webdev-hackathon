@@ -24,6 +24,24 @@ router.get('/info/fag/the-le', async (req, res, next) => {
 	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
 	return res.render('homepage/inform/rules', { sponsors, teamLogin });
 })
+//about
+router.get('/info/fag/ve-chung-toi', async (req, res, next) => {
+	let sponsors = await mongoose.model('sponsors').find();
+	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+	return res.render('homepage/inform/about', { sponsors, teamLogin });
+})
+//plan
+router.get('/info/fag/ke-hoach', async (req, res, next) => {
+	let sponsors = await mongoose.model('sponsors').find();
+	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+	return res.render('homepage/inform/plans', { sponsors, teamLogin });
+})
+//rule-mark
+router.get('/info/fag/cham-diem', async (req, res, next) => {
+	let sponsors = await mongoose.model('sponsors').find();
+	let teamLogin = await mongoose.model('teams').findById(req.signedCookies.team);
+	return res.render('homepage/inform/rule-mark', { sponsors, teamLogin });
+})
 
 require('./register')(router)
 require('./login-out')(router)
