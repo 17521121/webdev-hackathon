@@ -54,6 +54,34 @@ var sendMail = function (from, to, subject, content, attachments) {
   });
 }
 
+var ejs = require("ejs");
+var fs = require('fs')
+
+var sendRandCode = function (from, to, subject, params) {
+  ejs.renderFile("views/homepage/emailTemplate/randCode.ejs", params , function (err, content) {
+    if (err) {
+        console.log(err);
+    } else {
+        var mailOptions = {
+            from: from, 
+            to: to, //baz@example.com', // list of receivers
+            subject: subject, // Subject line
+            html: content, // '<b>html here</b>'
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return console.log(error);
+          }
+          console.log('Message sent: %s', info.response);
+          // Preview only available when sending through an Ethereal account
+          // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+          // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        });
+    }
+  })
+};
+
+
 module.exports = router => {
 
   router.get('/thong-bao-all', checkPermission(IS_USER), (req, res, next) => {
@@ -98,7 +126,7 @@ module.exports = router => {
 
   //Thông báo random code cho đội qua vòng 1
   router.get('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
-    let randCode = await mongoose.model("randCode").find({}).populate("teamId");
+    let randCode = await mongoose.model("randCode").find({}).populate('teamId');
     return res.render("adminpage/notify/randCode", { randCode });
   })
 
@@ -106,16 +134,18 @@ module.exports = router => {
   router.post('/passround-1', checkPermission(IS_USER), async (req, res, next) => {
     //nodemailer
     let subject = "Chúc mừng đội bạn đã vượt qua vòng 1!"     //subject 
-    let content = "Đội bạn đã vượt qua vòng 1, hãy dùng mã code nhận được bên dưới để tham gia vòng 2 nhé! \
-                  Hạn dùng của mã code là 1 ngày kể từ thời điểm nhận được mã code";     // content
-
     let randCode = await mongoose.model("randCode").find({}).populate("teamId");
     for(const team of randCode) {
       let sendTo = team.teamId.emailLeader;
       let rand = randomString.generate(8);
       team.text = rand;
       team.expired = new Date().setDate(new Date().getDate() + 1);  //ngày kế tiếp sau khi nhận được mã code
-      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, subject, content + "\n" + rand);
+      let params = {
+        teamName: team.teamId.teamName,
+        emailLeader: team.teamId.emailLeader,
+        randCode: rand
+      }
+      sendRandCode('"Web Hackathon" <webhackathon@gmail.com>', team.emailLeader, subject, params);
     }
 
     return res.redirect("/admin/passround-1");
