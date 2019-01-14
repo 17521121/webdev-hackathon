@@ -164,6 +164,7 @@
       var isConfirm = confirm('Bạn chắc chắn sẽ huỷ đăng kí chứ, kể cả khi đội bạn đã đóng lệ phí tham gia?')
       if(isConfirm) {
         $.post("/huy-dang-ki");
+        window.location.href = "/";
       }
     }
 
