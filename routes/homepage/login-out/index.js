@@ -36,7 +36,7 @@ module.exports = router => {
 
   router.post('/huy-dang-ki', async (req, res, next) => {
     let teamLogin = await mongoose.model('teams').findOneAndDelete({_id: req.signedCookies.team});
-    await req.clearCookie();
+    await res.clearCookie("team", {path:"/"});
     return res.redirect('/');
   })
 }

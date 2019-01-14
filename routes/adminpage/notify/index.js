@@ -47,7 +47,7 @@ var sendMail = function (from, to, subject, content, attachments) {
     if (error) {
       return console.log(error);
     }
-    console.log('Message sent: %s', info.messageId);
+    console.log('Message sent: %s', info.response);
     // Preview only available when sending through an Ethereal account
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
@@ -77,9 +77,9 @@ module.exports = router => {
       attachments.push({ filename: file.filename, path: 'thongbao/' + file.filename })
     });
     if (attachments.length)
-      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, req.body.subject, req.body.content, attachments);
+      sendMail('"Web Hackathon" <webhackathon@gmail.com>', sendTo, req.body.subject, req.body.content, attachments);
     else
-      sendMail('"Web Hackathon" <webuit@gmail.com>', sendTo, req.body.subject, req.body.content);
+      sendMail('"Web Hackathon" <webhackathon@gmail.com>', sendTo, req.body.subject, req.body.content);
     return res.redirect('/admin/thong-bao-all');
   })
 

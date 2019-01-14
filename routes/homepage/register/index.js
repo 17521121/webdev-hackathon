@@ -2,6 +2,44 @@ var router = require('express').Router();
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
+var nodemailer = require("nodemailer");
+var ejs = require("ejs");
+var fs = require('fs')
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: 'smtp.gmail.email',
+  port: 587,
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: '17521121@@gm.uit.edu.vn', // generated ethereal user
+    pass: '1a145636541' // generated ethereal password
+  }
+});
+
+var sendMail = function (from, to, subject, team) {
+  ejs.renderFile("views/homepage/emailTemplate/register.ejs", team , function (err, content) {
+    if (err) {
+        console.log(err);
+    } else {
+        var mailOptions = {
+            from: from, // '"Tiến kt 👻" <dangquoctienvktl@gmail.com>'
+            to: to, //baz@example.com', // list of receivers
+            subject: subject, // Subject line
+            html: content, // '<b>html here</b>'
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return console.log(error);
+          }
+          console.log('Message sent: %s', info.response);
+          // Preview only available when sending through an Ethereal account
+          // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+          // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        });
+    }
+  })
+};
+
 var { PLATFORMS } = require('../../../config/constants')
 
 module.exports = router => {
@@ -41,7 +79,8 @@ module.exports = router => {
         team.password = hash;
         await mongoose.model('teams').create(team);
       });
-     
+      let subject = "Đăng kí thành công"     //subject 
+      await sendMail('"Web Hackathon" <17521121@gm.uit.edu.vn>', team.emailLeader, subject, team);
       return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'success' });
     }
     catch (err) {
