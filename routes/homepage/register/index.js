@@ -11,8 +11,8 @@ var transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: '17521121@@gm.uit.edu.vn', // generated ethereal user
-    pass: '1a145636541' // generated ethereal password
+    user: 'webhackathon', // generated ethereal user
+    pass: 'password' // generated ethereal password
   }
 });
 
@@ -22,7 +22,7 @@ var sendMail = function (from, to, subject, team) {
         console.log(err);
     } else {
         var mailOptions = {
-            from: from, // '"Tiến kt 👻" <dangquoctienvktl@gmail.com>'
+            from: from, 
             to: to, //baz@example.com', // list of receivers
             subject: subject, // Subject line
             html: content, // '<b>html here</b>'
@@ -80,7 +80,7 @@ module.exports = router => {
         await mongoose.model('teams').create(team);
       });
       let subject = "Đăng kí thành công"     //subject 
-      await sendMail('"Web Hackathon" <17521121@gm.uit.edu.vn>', team.emailLeader, subject, team);
+      await sendMail('"Web Hackathon" <webhackathon@gmail.com>', team.emailLeader, subject, team);
       return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'success' });
     }
     catch (err) {
