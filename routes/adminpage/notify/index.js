@@ -29,8 +29,8 @@ var transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: 'webuit@gmail.com', // generated ethereal user
-    pass: 'pass' // generated ethereal password
+    user: '17521121@gm.uit.edu.vn', // generated ethereal user
+    pass: '1a145636541' // generated ethereal password
   }
 });
 var sendMail = function (from, to, subject, content, attachments) {
@@ -140,12 +140,13 @@ module.exports = router => {
       let rand = randomString.generate(8);
       team.text = rand;
       team.expired = new Date().setDate(new Date().getDate() + 1);  //ngày kế tiếp sau khi nhận được mã code
+      team.save();
       let params = {
         teamName: team.teamId.teamName,
         emailLeader: team.teamId.emailLeader,
         randCode: rand
       }
-      sendRandCode('"Web Hackathon" <webhackathon@gmail.com>', team.emailLeader, subject, params);
+      sendRandCode('"Web Hackathon" <webhackathon@gmail.com>', params.emailLeader, subject, params);
     }
 
     return res.redirect("/admin/passround-1");
