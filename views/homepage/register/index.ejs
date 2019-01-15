@@ -68,7 +68,7 @@
 				<div class="row">
 					<% if(data == 'error') { %>
 					<div class=" col-md-12 alert alert-danger mb-0">
-						<strong>Danger!</strong> Đăng kí không thành công!
+						<strong>Danger!</strong> <%- err %>
 					</div>
 					<% } else if (data == 'success') { %>
 					<div class=" col-md-12 alert alert-success mb-0 ">

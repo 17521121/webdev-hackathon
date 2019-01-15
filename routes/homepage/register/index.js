@@ -51,10 +51,13 @@ module.exports = router => {
   //post dang ki
   router.post('/dang-ki', async (req, res, next) => {
     let sponsors = await mongoose.model('sponsors').find();
-    let isExist = await mongoose.model('teams').findOne({emailLeader: req.body.emailLeader});
-    let isExist2 = await mongoose.model('teams').findOne({teamName: req.body.teamName});
-    if(isExist || isExist2) {
-      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'error' });
+    let isExistMail = await mongoose.model('teams').findOne({emailLeader: req.body.emailLeader});
+    let isExistName = await mongoose.model('teams').findOne({teamName: req.body.teamName});
+    if(isExistMail) {
+      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'error', err: 'Email đã tồn tại' });
+    }
+    if(isExistName) {
+      return res.render('homepage/register', { sponsors, teamLogin: '', PLATFORMS, data: 'error', err: 'Tên team đã tồn tại'  });
     }
     try {
       let team = {
