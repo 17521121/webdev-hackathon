@@ -29,8 +29,8 @@ var transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: '17521121@gm.uit.edu.vn', // generated ethereal user
-    pass: '1a145636541' // generated ethereal password
+    user: 'xinchao@gmail.com', // generated ethereal user
+    pass: 'pass' // generated ethereal password
   }
 });
 var sendMail = function (from, to, subject, content, attachments) {
